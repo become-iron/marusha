@@ -1,5 +1,6 @@
 table {
   border-collapse: collapse;
+  max-width: 70%;
 }
 
 table, th, td {

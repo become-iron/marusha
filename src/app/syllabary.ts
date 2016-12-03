@@ -14,7 +14,7 @@ interface SyllabaryItem {
 }
 
 
-let hiragana: SyllabaryItem[] = [
+export let hiragana: SyllabaryItem[] = [
   {sign: 'あ', transcription: 'а', row: '', column: 'а'},
   {sign: 'い', transcription: 'и', row: '', column: 'и'},
   {sign: 'う', transcription: 'у', row: '', column: 'у'},
@@ -141,7 +141,7 @@ let hiragana: SyllabaryItem[] = [
 ];
 
 // TODO
-let katakana: SyllabaryItem[] = [
+export let katakana: SyllabaryItem[] = [
   {sign: 'ア', transcription: 'а', row: '', column: 'а'},
   {sign: 'イ', transcription: 'и', row: '', column: 'и'},
   {sign: 'ウ', transcription: 'у', row: '', column: 'у'},
@@ -273,7 +273,9 @@ export class TableOfKana {
   rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
 
-  constructor(syllabary: string) {
-    syllabary === 'katakana' ? this.table = katakana : this.table = hiragana;
-  }
+  constructor() {}
+
+  // constructor(syllabary: string) {
+  //   syllabary === 'katakana' ? this.table = katakana : this.table = hiragana;
+  // }
 }
