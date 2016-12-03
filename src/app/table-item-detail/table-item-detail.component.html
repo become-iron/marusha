@@ -1,0 +1,12 @@
+<button (click)="goBack()">Назад</button>
+<div class="big-sign">{{item.sign}}</div>
+<div>{{kana}}</div>
+<div>{{item.transcription}}</div>
+
+<!--TODO костыль детектед-->
+<div *ngIf="kana == 'hiragana'">
+  <div *ngFor="let word of getWords(kana, item.sign)">{{word.hiragana}} - {{word.translation}}</div>
+</div>
+<div *ngIf="kana == 'katakana'">
+  <div *ngFor="let word of getWords(kana, item.sign)">{{word.katakana}} - {{word.translation}}</div>
+</div>

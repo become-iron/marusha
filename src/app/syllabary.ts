@@ -3,7 +3,7 @@
 // TODO Дополнительные знаки каны для передачи отсутствующих в годзюоне звуков (https://ru.wikipedia.org/wiki/Катакана#.D0.9F.D0.BE.D0.BB.D0.BD.D0.B0.D1.8F_.D1.82.D0.B0.D0.B1.D0.BB.D0.B8.D1.86.D0.B0)
 
 // элемент азбуки
-interface SyllabaryItem {
+export interface SyllabaryItem {
   readonly sign: string,  // символ
   readonly transcription: string,
   readonly row: string,
@@ -140,7 +140,7 @@ export let hiragana: SyllabaryItem[] = [
   {sign: 'ぴょ', transcription: 'пё', row: 'п', column: 'ё', isDakuten: true, isYouon: true}
 ];
 
-// TODO
+
 export let katakana: SyllabaryItem[] = [
   {sign: 'ア', transcription: 'а', row: '', column: 'а'},
   {sign: 'イ', transcription: 'и', row: '', column: 'и'},
@@ -169,102 +169,102 @@ export let katakana: SyllabaryItem[] = [
   {sign: 'シュ', transcription: 'сю', row: 'с', column: 'ю', isYouon: true},
   {sign: 'ショ', transcription: 'сё', row: 'с', column: 'ё', isYouon: true},
 
-  // {sign: 'た', transcription: 'та', row: 'т', column: 'а'},
-  // {sign: 'ち', transcription: 'ти', row: 'т', column: 'и'},
-  // {sign: 'つ', transcription: 'цу', row: 'т', column: 'у'},
-  // {sign: 'て', transcription: 'тэ', row: 'т', column: 'э'},
-  // {sign: 'と', transcription: 'то', row: 'т', column: 'о'},
-  // {sign: 'ちゃ', transcription: 'тя', row: 'т', column: 'я', isYouon: true},
-  // {sign: 'ちゅ', transcription: 'тю', row: 'т', column: 'ю', isYouon: true},
-  // {sign: 'ちょ', transcription: 'тё', row: 'т', column: 'ё', isYouon: true},
-  //
-  // {sign: 'な', transcription: 'на', row: 'н', column: 'а'},
-  // {sign: 'に', transcription: 'ни', row: 'н', column: 'и'},
-  // {sign: 'ぬ', transcription: 'ну', row: 'н', column: 'у'},
-  // {sign: 'ね', transcription: 'нэ', row: 'н', column: 'э'},
-  // {sign: 'の', transcription: 'но', row: 'н', column: 'о'},
-  // {sign: 'にゃ', transcription: 'ня', row: 'н', column: 'я', isYouon: true},
-  // {sign: 'にゅ', transcription: 'ню', row: 'н', column: 'ю', isYouon: true},
-  // {sign: 'にょ', transcription: 'нё', row: 'н', column: 'ё', isYouon: true},
-  //
-  // {sign: 'は', transcription: 'ха', row: 'х', column: 'а'},
-  // {sign: 'ひ', transcription: 'хи', row: 'х', column: 'и'},
-  // {sign: 'ふ', transcription: 'фу', row: 'х', column: 'у'},
-  // {sign: 'へ', transcription: 'хэ', row: 'х', column: 'э'},
-  // {sign: 'ほ', transcription: 'хо', row: 'х', column: 'о'},
-  // {sign: 'ひゃ', transcription: 'хя', row: 'х', column: 'я', isYouon: true},
-  // {sign: 'ひゅ', transcription: 'хю', row: 'х', column: 'ю', isYouon: true},
-  // {sign: 'ひょ', transcription: 'хё', row: 'х', column: 'ё', isYouon: true},
-  //
-  // {sign: 'ま', transcription: 'ма', row: 'м', column: 'а'},
-  // {sign: 'み', transcription: 'ми', row: 'м', column: 'и'},
-  // {sign: 'む', transcription: 'му', row: 'м', column: 'у'},
-  // {sign: 'め', transcription: 'мэ', row: 'м', column: 'э'},
-  // {sign: 'も', transcription: 'мо', row: 'м', column: 'о'},
-  // {sign: 'みゃ', transcription: 'мя', row: 'м', column: 'я', isYouon: true},
-  // {sign: 'みゅ', transcription: 'мю', row: 'м', column: 'ю', isYouon: true},
-  // {sign: 'みょ', transcription: 'мё', row: 'м', column: 'ё', isYouon: true},
-  //
-  // {sign: 'ら', transcription: 'ра', row: 'р', column: 'а'},
-  // {sign: 'り', transcription: 'ри', row: 'р', column: 'и'},
-  // {sign: 'る', transcription: 'ру', row: 'р', column: 'у'},
-  // {sign: 'れ', transcription: 'рэ', row: 'р', column: 'э'},
-  // {sign: 'ろ', transcription: 'ро', row: 'р', column: 'о'},
-  // {sign: 'りゃ', transcription: 'ря', row: 'р', column: 'я', isYouon: true},
-  // {sign: 'りゅ', transcription: 'рю', row: 'р', column: 'ю', isYouon: true},
-  // {sign: 'りょ', transcription: 'рё', row: 'р', column: 'ё', isYouon: true},
-  //
-  // {sign: 'わ', transcription: 'ва', row: 'в', column: 'а'},
-  // {sign: 'を', transcription: 'о', row: 'в', column: 'о'},
-  //
-  // {sign: 'ん', transcription: 'н', row: 'н', column: ''},
-  //
-  //
-  // // дакутэны
-  // {sign: 'が', transcription: 'га', row: 'г', column: 'а', isDakuten: true},
-  // {sign: 'ぎ', transcription: 'ги', row: 'г', column: 'и', isDakuten: true},
-  // {sign: 'ぐ', transcription: 'гу', row: 'г', column: 'у', isDakuten: true},
-  // {sign: 'げ', transcription: 'гэ', row: 'г', column: 'э', isDakuten: true},
-  // {sign: 'ご', transcription: 'го', row: 'г', column: 'о', isDakuten: true},
-  // {sign: 'ぎゃ', transcription: 'гя', row: 'г', column: 'я', isDakuten: true, isYouon: true},
-  // {sign: 'ぎゅ', transcription: 'гю', row: 'г', column: 'ю', isDakuten: true, isYouon: true},
-  // {sign: 'ぎょ', transcription: 'гё', row: 'г', column: 'ё', isDakuten: true, isYouon: true},
-  //
-  // {sign: 'ざ', transcription: 'дза', row: 'дз', column: 'а', isDakuten: true},
-  // {sign: 'じ', transcription: 'дзи', row: 'дз', column: 'и', isDakuten: true},
-  // {sign: 'ず', transcription: 'дзу', row: 'дз', column: 'у', isDakuten: true},
-  // {sign: 'ぜ', transcription: 'дзэ', row: 'дз', column: 'э', isDakuten: true},
-  // {sign: 'ぞ', transcription: 'дзо', row: 'дз', column: 'о', isDakuten: true},
-  // {sign: 'じゃ', transcription: 'дзя', row: 'дз', column: 'я', isDakuten: true, isYouon: true},
-  // {sign: 'じゅ', transcription: 'дзю', row: 'дз', column: 'ю', isDakuten: true, isYouon: true},
-  // {sign: 'じょ', transcription: 'дзё', row: 'дз', column: 'ё', isDakuten: true, isYouon: true},
-  //
-  // {sign: 'だ', transcription: 'да', row: 'д', column: 'а', isDakuten: true},
-  // {sign: 'ぢ', transcription: 'дзи', row: 'д', column: 'и', isDakuten: true},
-  // {sign: 'づ', transcription: 'дзу', row: 'д', column: 'у', isDakuten: true},
-  // {sign: 'で', transcription: 'дэ', row: 'д', column: 'э', isDakuten: true},
-  // {sign: 'ど', transcription: 'до', row: 'д', column: 'о', isDakuten: true},
-  // {sign: 'ぢゃ', transcription: 'дзя', row: 'д', column: 'я', isDakuten: true, isYouon: true},
-  // {sign: 'ぢゅ', transcription: 'дзю', row: 'д', column: 'ю', isDakuten: true, isYouon: true},
-  // {sign: 'ぢょ', transcription: 'дзё', row: 'д', column: 'ё', isDakuten: true, isYouon: true},
-  //
-  // {sign: 'ば', transcription: 'ба', row: 'б', column: 'а', isDakuten: true},
-  // {sign: 'び', transcription: 'би', row: 'б', column: 'и', isDakuten: true},
-  // {sign: 'ぶ', transcription: 'бу', row: 'б', column: 'у', isDakuten: true},
-  // {sign: 'べ', transcription: 'бэ', row: 'б', column: 'э', isDakuten: true},
-  // {sign: 'ぼ', transcription: 'бо', row: 'б', column: 'о', isDakuten: true},
-  // {sign: 'びゃ', transcription: 'бя', row: 'б', column: 'я', isDakuten: true, isYouon: true},
-  // {sign: 'びゅ', transcription: 'бю', row: 'б', column: 'ю', isDakuten: true, isYouon: true},
-  // {sign: 'びょ', transcription: 'бё', row: 'б', column: 'ё', isDakuten: true, isYouon: true},
-  //
-  // {sign: 'ぱ', transcription: 'па', row: 'п', column: 'а', isDakuten: true},
-  // {sign: 'ぴ', transcription: 'пи', row: 'п', column: 'и', isDakuten: true},
-  // {sign: 'ぷ', transcription: 'пу', row: 'п', column: 'у', isDakuten: true},
-  // {sign: 'ぺ', transcription: 'пэ', row: 'п', column: 'э', isDakuten: true},
-  // {sign: 'ぽ', transcription: 'по', row: 'п', column: 'о', isDakuten: true},
-  // {sign: 'ぴゃ', transcription: 'пя', row: 'п', column: 'я', isDakuten: true, isYouon: true},
-  // {sign: 'ぴゅ', transcription: 'пю', row: 'п', column: 'ю', isDakuten: true, isYouon: true},
-  // {sign: 'ぴょ', transcription: 'пё', row: 'п', column: 'ё', isDakuten: true, isYouon: true}
+  {sign: 'タ', transcription: 'та', row: 'т', column: 'а'},
+  {sign: 'チ', transcription: 'ти', row: 'т', column: 'и'},
+  {sign: 'ツ', transcription: 'цу', row: 'т', column: 'у'},
+  {sign: 'テ', transcription: 'тэ', row: 'т', column: 'э'},
+  {sign: 'ト', transcription: 'то', row: 'т', column: 'о'},
+  {sign: 'チャ', transcription: 'тя', row: 'т', column: 'я', isYouon: true},
+  {sign: 'チュ', transcription: 'тю', row: 'т', column: 'ю', isYouon: true},
+  {sign: 'チョ', transcription: 'тё', row: 'т', column: 'ё', isYouon: true},
+
+  {sign: 'ナ', transcription: 'на', row: 'н', column: 'а'},
+  {sign: 'ニ', transcription: 'ни', row: 'н', column: 'и'},
+  {sign: 'ヌ', transcription: 'ну', row: 'н', column: 'у'},
+  {sign: 'ネ', transcription: 'нэ', row: 'н', column: 'э'},
+  {sign: 'ノ', transcription: 'но', row: 'н', column: 'о'},
+  {sign: 'ニャ', transcription: 'ня', row: 'н', column: 'я', isYouon: true},
+  {sign: 'ニュ', transcription: 'ню', row: 'н', column: 'ю', isYouon: true},
+  {sign: 'ニョ', transcription: 'нё', row: 'н', column: 'ё', isYouon: true},
+
+  {sign: 'ハ', transcription: 'ха', row: 'х', column: 'а'},
+  {sign: 'ヒ', transcription: 'хи', row: 'х', column: 'и'},
+  {sign: 'フ', transcription: 'фу', row: 'х', column: 'у'},
+  {sign: 'ヘ', transcription: 'хэ', row: 'х', column: 'э'},
+  {sign: 'ホ', transcription: 'хо', row: 'х', column: 'о'},
+  {sign: 'ヒャ', transcription: 'хя', row: 'х', column: 'я', isYouon: true},
+  {sign: 'ヒュ', transcription: 'хю', row: 'х', column: 'ю', isYouon: true},
+  {sign: 'ヒョ', transcription: 'хё', row: 'х', column: 'ё', isYouon: true},
+
+  {sign: 'マ', transcription: 'ма', row: 'м', column: 'а'},
+  {sign: 'ミ', transcription: 'ми', row: 'м', column: 'и'},
+  {sign: 'ム', transcription: 'му', row: 'м', column: 'у'},
+  {sign: 'メ', transcription: 'мэ', row: 'м', column: 'э'},
+  {sign: 'モ', transcription: 'мо', row: 'м', column: 'о'},
+  {sign: 'ミャ', transcription: 'мя', row: 'м', column: 'я', isYouon: true},
+  {sign: 'ミュ', transcription: 'мю', row: 'м', column: 'ю', isYouon: true},
+  {sign: 'ミョ', transcription: 'мё', row: 'м', column: 'ё', isYouon: true},
+
+  {sign: 'ラ', transcription: 'ра', row: 'р', column: 'а'},
+  {sign: 'リ', transcription: 'ри', row: 'р', column: 'и'},
+  {sign: 'ル', transcription: 'ру', row: 'р', column: 'у'},
+  {sign: 'レ', transcription: 'рэ', row: 'р', column: 'э'},
+  {sign: 'ロ', transcription: 'ро', row: 'р', column: 'о'},
+  {sign: 'リャ', transcription: 'ря', row: 'р', column: 'я', isYouon: true},
+  {sign: 'リュ', transcription: 'рю', row: 'р', column: 'ю', isYouon: true},
+  {sign: 'リョ', transcription: 'рё', row: 'р', column: 'ё', isYouon: true},
+
+  {sign: 'ワ', transcription: 'ва', row: 'в', column: 'а'},
+  {sign: 'ヲ', transcription: 'о', row: 'в', column: 'о'},
+
+  {sign: 'ン', transcription: 'н', row: 'н', column: ''},
+
+
+  // дакутэны
+  {sign: 'ガ', transcription: 'га', row: 'г', column: 'а', isDakuten: true},
+  {sign: 'ギ', transcription: 'ги', row: 'г', column: 'и', isDakuten: true},
+  {sign: 'グ', transcription: 'гу', row: 'г', column: 'у', isDakuten: true},
+  {sign: 'ゲ', transcription: 'гэ', row: 'г', column: 'э', isDakuten: true},
+  {sign: 'ゴ', transcription: 'го', row: 'г', column: 'о', isDakuten: true},
+  {sign: 'ギャ', transcription: 'гя', row: 'г', column: 'я', isDakuten: true, isYouon: true},
+  {sign: 'ギュ', transcription: 'гю', row: 'г', column: 'ю', isDakuten: true, isYouon: true},
+  {sign: 'ギョ', transcription: 'гё', row: 'г', column: 'ё', isDakuten: true, isYouon: true},
+
+  {sign: 'ザ', transcription: 'дза', row: 'дз', column: 'а', isDakuten: true},
+  {sign: 'ジ', transcription: 'дзи', row: 'дз', column: 'и', isDakuten: true},
+  {sign: 'ズ', transcription: 'дзу', row: 'дз', column: 'у', isDakuten: true},
+  {sign: 'ゼ', transcription: 'дзэ', row: 'дз', column: 'э', isDakuten: true},
+  {sign: 'ゾ', transcription: 'дзо', row: 'дз', column: 'о', isDakuten: true},
+  {sign: 'ジャ', transcription: 'дзя', row: 'дз', column: 'я', isDakuten: true, isYouon: true},
+  {sign: 'ジュ', transcription: 'дзю', row: 'дз', column: 'ю', isDakuten: true, isYouon: true},
+  {sign: 'ジョ', transcription: 'дзё', row: 'дз', column: 'ё', isDakuten: true, isYouon: true},
+
+  {sign: 'ダ', transcription: 'да', row: 'д', column: 'а', isDakuten: true},
+  {sign: 'ヂ', transcription: 'дзи', row: 'д', column: 'и', isDakuten: true},
+  {sign: 'ヅ', transcription: 'дзу', row: 'д', column: 'у', isDakuten: true},
+  {sign: 'デ', transcription: 'дэ', row: 'д', column: 'э', isDakuten: true},
+  {sign: 'ド', transcription: 'до', row: 'д', column: 'о', isDakuten: true},
+  {sign: 'ヂャ', transcription: 'дзя', row: 'д', column: 'я', isDakuten: true, isYouon: true},
+  {sign: 'ヂュ', transcription: 'дзю', row: 'д', column: 'ю', isDakuten: true, isYouon: true},
+  {sign: 'ヂョ', transcription: 'дзё', row: 'д', column: 'ё', isDakuten: true, isYouon: true},
+
+  {sign: 'バ', transcription: 'ба', row: 'б', column: 'а', isDakuten: true},
+  {sign: 'ビ', transcription: 'би', row: 'б', column: 'и', isDakuten: true},
+  {sign: 'ブ', transcription: 'бу', row: 'б', column: 'у', isDakuten: true},
+  {sign: 'ベ', transcription: 'бэ', row: 'б', column: 'э', isDakuten: true},
+  {sign: 'ボ', transcription: 'бо', row: 'б', column: 'о', isDakuten: true},
+  {sign: 'ビャ', transcription: 'бя', row: 'б', column: 'я', isDakuten: true, isYouon: true},
+  {sign: 'ビュ', transcription: 'бю', row: 'б', column: 'ю', isDakuten: true, isYouon: true},
+  {sign: 'ビョ', transcription: 'бё', row: 'б', column: 'ё', isDakuten: true, isYouon: true},
+
+  {sign: 'パ', transcription: 'па', row: 'п', column: 'а', isDakuten: true},
+  {sign: 'ピ', transcription: 'пи', row: 'п', column: 'и', isDakuten: true},
+  {sign: 'プ', transcription: 'пу', row: 'п', column: 'у', isDakuten: true},
+  {sign: 'ペ', transcription: 'пэ', row: 'п', column: 'э', isDakuten: true},
+  {sign: 'ポ', transcription: 'по', row: 'п', column: 'о', isDakuten: true},
+  {sign: 'ピャ', transcription: 'пя', row: 'п', column: 'я', isDakuten: true, isYouon: true},
+  {sign: 'ピュ', transcription: 'пю', row: 'п', column: 'ю', isDakuten: true, isYouon: true},
+  {sign: 'ピョ', transcription: 'пё', row: 'п', column: 'ё', isDakuten: true, isYouon: true}
 ];
 
 
@@ -273,9 +273,12 @@ export class TableOfKana {
   rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
 
-  constructor() {}
+  getItem(row: string, column:string) {
+    return this.table.find(obj => obj.row === row && obj.column === column);
+  }
 
-  // constructor(syllabary: string) {
-  //   syllabary === 'katakana' ? this.table = katakana : this.table = hiragana;
-  // }
+  getItemSign(row: string, column:string): string {
+    let item = this.getItem(row, column);
+    return (typeof item != 'undefined') ? item.sign : '';
+  }
 }

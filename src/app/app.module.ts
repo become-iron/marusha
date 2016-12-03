@@ -9,6 +9,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { MenuComponent } from './menu/menu.component';
 import { TableComponent } from './table/table.component';
 import { AboutComponent } from './about/about.component';
+import { TableItemDetailComponent } from './table-item-detail/table-item-detail.component';
 
 
 
@@ -17,7 +18,8 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     MenuComponent,
     TableComponent,
-    AboutComponent
+    AboutComponent,
+    TableItemDetailComponent,
   ],
   imports: [
     BrowserModule,

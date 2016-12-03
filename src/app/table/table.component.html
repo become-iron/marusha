@@ -1,10 +1,12 @@
-<table class="table table-hover table-sm">
+<table *ngIf="table" class="table table-hover table-sm">
   <tr>
     <th></th>
     <th *ngFor="let column of columns">{{column}}</th>
   </tr>
   <tr *ngFor="let row of rows">
     <th>{{row}}</th>
-    <td *ngFor="let column of columns">{{getItemSign(row, column)}}</td>
+    <td *ngFor="let column of columns" (click)="gotoTableItemDetail(row, column)">
+      {{getItemSign(row, column)}}
+    </td>
   </tr>
 </table>
