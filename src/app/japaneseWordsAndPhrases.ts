@@ -10,8 +10,8 @@ export interface WordOrPhrase {
 }
 
 
-export function getWordsBySign(kana: string, sign: string) {
-  let words_hiragana: WordOrPhrase[] = [
+export function getWordsBySign(kana: string, sign: string): WordOrPhrase[] {
+  let words: WordOrPhrase[] = [
     // глаголы
     {translation: 'существовать, быть, находиться (неодушевленных предметах)', hiragana: 'ある'},
     {translation: 'cуществовать, быть (об одушевленных предметах)', hiragana: 'いる'},
@@ -47,9 +47,8 @@ export function getWordsBySign(kana: string, sign: string) {
     // прилагательные
     {translation: 'удивительный', hiragana: 'すごい'},
     {translation: 'хороший', hiragana: 'いい'},
-  ];
 
-  let words_katakana: WordOrPhrase[] = [
+    // катакана
     {translation: 'туалет', katakana: 'トイレ'},
     {translation: 'отель', katakana: 'ホテル '},
     {translation: 'такси', katakana: 'タクシ'},
@@ -91,10 +90,5 @@ export function getWordsBySign(kana: string, sign: string) {
     {translation: 'Что?', hiragana: 'なに？',},
   ];
 
-  if (kana == 'hiragana') {
-    return words_hiragana.filter(obj => obj.hiragana.includes(sign));
-  }
-  else if (kana == 'katakana') {
-    return words_katakana.filter(obj => obj.katakana.includes(sign));
-  }
+  return words.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
 }
