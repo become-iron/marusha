@@ -36,7 +36,7 @@ export class TableComponent extends TableOfKana implements OnInit{
   gotoTableItemDetail(row: string, column: string) {
     let item = this.getItem(row, column);
     if (typeof item == 'undefined') {return;}  // если пустая ячейка
-    let url = '/table/' + this.kana + '/' + item[this.kana];  // TODO
+    let url = `/table/${this.kana}/${item[this.kana]}`;
     this.router.navigate([url]);
   }
 }

@@ -1,0 +1,15 @@
+.big-sign {
+  font-size: 3em;
+}
+
+.previous_right_option {
+  font-size: 2em;
+}
+
+.wrong {
+  color: red;
+}
+
+.right {
+  color: green;
+}

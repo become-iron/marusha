@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { TableComponent } from './table/table.component';
 import { AboutComponent } from './about/about.component';
 import { TableItemDetailComponent } from './table-item-detail/table-item-detail.component';
+import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
 
 
 
@@ -20,6 +21,7 @@ import { TableItemDetailComponent } from './table-item-detail/table-item-detail.
     TableComponent,
     AboutComponent,
     TableItemDetailComponent,
+    CorrespondingSymbolComponent,
   ],
   imports: [
     BrowserModule,

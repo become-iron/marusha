@@ -1,0 +1,16 @@
+<div class="big-sign" (click)="gotoTableItemDetail()">
+  {{right_option[kana]}}
+</div>
+<div>
+  <button *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[other_kana]}}</button>
+</div>
+<div>
+  <button (click)="skip()">Пропустить</button>
+</div>
+<div class="previous_right_option"
+     *ngIf="previous_right_option"
+     [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}"
+>
+  {{previous_right_option[kana]}} - {{previous_right_option[other_kana]}} - {{previous_right_option.transcription}}
+</div>
+<div><button (click)="gotoProgressTable()">Прогресс</button></div>

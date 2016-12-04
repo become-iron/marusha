@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { TableComponent } from './table/table.component';
 import { TableItemDetailComponent } from './table-item-detail/table-item-detail.component';
 import { AboutComponent } from './about/about.component';
+import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
 
 
 const appRoutes: Routes = [
@@ -15,7 +16,7 @@ const appRoutes: Routes = [
   // { path: 'practice/transcription-to-sign/:kana', component: null },
   // { path: 'practice/sign-to-transcription/:kana', component: null },
   // { path: 'practice/similar-signs/:kana', component: null },
-  // { path: 'practice/find-a-match/:kana', component: null },
+  { path: 'practice/corresponding-symbol/:kana', component: CorrespondingSymbolComponent },
   // { path: 'practice/draw/:kana', component: null },
   { path: '**', redirectTo: '/about' },
 ];
