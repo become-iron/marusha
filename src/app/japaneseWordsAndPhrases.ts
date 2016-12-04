@@ -55,6 +55,9 @@ export function getWordsBySign(kana: string, sign: string): WordOrPhrase[] {
     {translation: 'ресторан', katakana: 'レストラン'},
     {translation: 'магазин', katakana: 'コンビニ'},
     {translation: 'супермаркет', katakana: 'スーパー'},
+    {translation: 'кофе', katakana: 'コーヒ'},
+    {translation: 'стекло', katakana: 'ガラス'},
+    {translation: 'икра', katakana: 'イクラ'},
   ];
 
   let phrases: WordOrPhrase[] = [

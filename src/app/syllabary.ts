@@ -10,7 +10,7 @@ export interface SyllabaryItem {
   readonly transcription: string,
   readonly row: string,
   readonly column: string,
-  readonly isDakuten?: boolean, // дакутэн (https://ru.wikipedia.org/wiki/Дакутэн)
+  readonly isDiacritic?: boolean, // с диакритиком (https://ru.wikipedia.org/wiki/Дакутэн и https://ru.wikipedia.org/wiki/Хандакутэн)
   readonly isYouon?: boolean,  // ёон (https://ru.wikipedia.org/wiki/Ёон)
   progress?: number
 }
@@ -97,51 +97,51 @@ export class TableOfKana {
     {id: 66, hiragana: 'を', katakana: 'ヲ', transcription: 'о', row: 'в', column: 'о'},
 
 
-    // дaкутэны
-    {id: 67, hiragana: 'が', katakana: 'ガ', transcription: 'га', row: 'г', column: 'а', isDakuten: true},
-    {id: 68, hiragana: 'ぎ', katakana: 'ギ', transcription: 'ги', row: 'г', column: 'и', isDakuten: true},
-    {id: 69, hiragana: 'ぐ', katakana: 'グ', transcription: 'гу', row: 'г', column: 'у', isDakuten: true},
-    {id: 70, hiragana: 'げ', katakana: 'ゲ', transcription: 'гэ', row: 'г', column: 'э', isDakuten: true},
-    {id: 71, hiragana: 'ご', katakana: 'ゴ', transcription: 'го', row: 'г', column: 'о', isDakuten: true},
-    {id: 72, hiragana: 'ぎゃ', katakana: 'ギャ', transcription: 'гя', row: 'г', column: 'я', isDakuten: true, isYouon: true},
-    {id: 73, hiragana: 'ぎゅ', katakana: 'ギュ', transcription: 'гю', row: 'г', column: 'ю', isDakuten: true, isYouon: true},
-    {id: 74, hiragana: 'ぎょ', katakana: 'ギョ', transcription: 'гё', row: 'г', column: 'ё', isDakuten: true, isYouon: true},
+    // с диакритиком
+    {id: 67, hiragana: 'が', katakana: 'ガ', transcription: 'га', row: 'г', column: 'а', isDiacritic: true},
+    {id: 68, hiragana: 'ぎ', katakana: 'ギ', transcription: 'ги', row: 'г', column: 'и', isDiacritic: true},
+    {id: 69, hiragana: 'ぐ', katakana: 'グ', transcription: 'гу', row: 'г', column: 'у', isDiacritic: true},
+    {id: 70, hiragana: 'げ', katakana: 'ゲ', transcription: 'гэ', row: 'г', column: 'э', isDiacritic: true},
+    {id: 71, hiragana: 'ご', katakana: 'ゴ', transcription: 'го', row: 'г', column: 'о', isDiacritic: true},
+    {id: 72, hiragana: 'ぎゃ', katakana: 'ギャ', transcription: 'гя', row: 'г', column: 'я', isDiacritic: true, isYouon: true},
+    {id: 73, hiragana: 'ぎゅ', katakana: 'ギュ', transcription: 'гю', row: 'г', column: 'ю', isDiacritic: true, isYouon: true},
+    {id: 74, hiragana: 'ぎょ', katakana: 'ギョ', transcription: 'гё', row: 'г', column: 'ё', isDiacritic: true, isYouon: true},
 
-    {id: 75, hiragana: 'ざ', katakana: 'ザ', transcription: 'дза', row: 'дз', column: 'а', isDakuten: true},
-    {id: 76, hiragana: 'じ', katakana: 'ジ', transcription: 'дзи', row: 'дз', column: 'и', isDakuten: true},
-    {id: 77, hiragana: 'ず', katakana: 'ズ', transcription: 'дзу', row: 'дз', column: 'у', isDakuten: true},
-    {id: 78, hiragana: 'ぜ', katakana: 'ゼ', transcription: 'дзэ', row: 'дз', column: 'э', isDakuten: true},
-    {id: 79, hiragana: 'ぞ', katakana: 'ゾ', transcription: 'дзо', row: 'дз', column: 'о', isDakuten: true},
-    {id: 80, hiragana: 'じゃ', katakana: 'ジャ', transcription: 'дзя', row: 'дз', column: 'я', isDakuten: true, isYouon: true},
-    {id: 81, hiragana: 'じゅ', katakana: 'ジュ', transcription: 'дзю', row: 'дз', column: 'ю', isDakuten: true, isYouon: true},
-    {id: 82, hiragana: 'じょ', katakana: 'ジョ', transcription: 'дзё', row: 'дз', column: 'ё', isDakuten: true, isYouon: true},
+    {id: 75, hiragana: 'ざ', katakana: 'ザ', transcription: 'дза', row: 'дз', column: 'а', isDiacritic: true},
+    {id: 76, hiragana: 'じ', katakana: 'ジ', transcription: 'дзи', row: 'дз', column: 'и', isDiacritic: true},
+    {id: 77, hiragana: 'ず', katakana: 'ズ', transcription: 'дзу', row: 'дз', column: 'у', isDiacritic: true},
+    {id: 78, hiragana: 'ぜ', katakana: 'ゼ', transcription: 'дзэ', row: 'дз', column: 'э', isDiacritic: true},
+    {id: 79, hiragana: 'ぞ', katakana: 'ゾ', transcription: 'дзо', row: 'дз', column: 'о', isDiacritic: true},
+    {id: 80, hiragana: 'じゃ', katakana: 'ジャ', transcription: 'дзя', row: 'дз', column: 'я', isDiacritic: true, isYouon: true},
+    {id: 81, hiragana: 'じゅ', katakana: 'ジュ', transcription: 'дзю', row: 'дз', column: 'ю', isDiacritic: true, isYouon: true},
+    {id: 82, hiragana: 'じょ', katakana: 'ジョ', transcription: 'дзё', row: 'дз', column: 'ё', isDiacritic: true, isYouon: true},
 
-    {id: 83, hiragana: 'だ', katakana: 'ダ', transcription: 'да', row: 'д', column: 'а', isDakuten: true},
-    {id: 84, hiragana: 'ぢ', katakana: 'ヂ', transcription: 'дзи', row: 'д', column: 'и', isDakuten: true},
-    {id: 85, hiragana: 'づ', katakana: 'ヅ', transcription: 'дзу', row: 'д', column: 'у', isDakuten: true},
-    {id: 86, hiragana: 'で', katakana: 'デ', transcription: 'дэ', row: 'д', column: 'э', isDakuten: true},
-    {id: 87, hiragana: 'ど', katakana: 'ド', transcription: 'до', row: 'д', column: 'о', isDakuten: true},
-    {id: 88, hiragana: 'ぢゃ', katakana: 'ヂャ', transcription: 'дзя', row: 'д', column: 'я', isDakuten: true, isYouon: true},
-    {id: 89, hiragana: 'ぢゅ', katakana: 'ヂュ', transcription: 'дзю', row: 'д', column: 'ю', isDakuten: true, isYouon: true},
-    {id: 90, hiragana: 'ぢょ', katakana: 'ヂョ', transcription: 'дзё', row: 'д', column: 'ё', isDakuten: true, isYouon: true},
+    {id: 83, hiragana: 'だ', katakana: 'ダ', transcription: 'да', row: 'д', column: 'а', isDiacritic: true},
+    {id: 84, hiragana: 'ぢ', katakana: 'ヂ', transcription: 'дзи', row: 'д', column: 'и', isDiacritic: true},
+    {id: 85, hiragana: 'づ', katakana: 'ヅ', transcription: 'дзу', row: 'д', column: 'у', isDiacritic: true},
+    {id: 86, hiragana: 'で', katakana: 'デ', transcription: 'дэ', row: 'д', column: 'э', isDiacritic: true},
+    {id: 87, hiragana: 'ど', katakana: 'ド', transcription: 'до', row: 'д', column: 'о', isDiacritic: true},
+    {id: 88, hiragana: 'ぢゃ', katakana: 'ヂャ', transcription: 'дзя', row: 'д', column: 'я', isDiacritic: true, isYouon: true},
+    {id: 89, hiragana: 'ぢゅ', katakana: 'ヂュ', transcription: 'дзю', row: 'д', column: 'ю', isDiacritic: true, isYouon: true},
+    {id: 90, hiragana: 'ぢょ', katakana: 'ヂョ', transcription: 'дзё', row: 'д', column: 'ё', isDiacritic: true, isYouon: true},
 
-    {id: 91, hiragana: 'ば', katakana: 'バ', transcription: 'ба', row: 'б', column: 'а', isDakuten: true},
-    {id: 92, hiragana: 'び', katakana: 'ビ', transcription: 'би', row: 'б', column: 'и', isDakuten: true},
-    {id: 93, hiragana: 'ぶ', katakana: 'ブ', transcription: 'бу', row: 'б', column: 'у', isDakuten: true},
-    {id: 94, hiragana: 'べ', katakana: 'ベ', transcription: 'бэ', row: 'б', column: 'э', isDakuten: true},
-    {id: 95, hiragana: 'ぼ', katakana: 'ボ', transcription: 'бо', row: 'б', column: 'о', isDakuten: true},
-    {id: 96, hiragana: 'びゃ', katakana: 'ビャ', transcription: 'бя', row: 'б', column: 'я', isDakuten: true, isYouon: true},
-    {id: 97, hiragana: 'びゅ', katakana: 'ビュ', transcription: 'бю', row: 'б', column: 'ю', isDakuten: true, isYouon: true},
-    {id: 98, hiragana: 'びょ', katakana: 'ビョ', transcription: 'бё', row: 'б', column: 'ё', isDakuten: true, isYouon: true},
+    {id: 91, hiragana: 'ば', katakana: 'バ', transcription: 'ба', row: 'б', column: 'а', isDiacritic: true},
+    {id: 92, hiragana: 'び', katakana: 'ビ', transcription: 'би', row: 'б', column: 'и', isDiacritic: true},
+    {id: 93, hiragana: 'ぶ', katakana: 'ブ', transcription: 'бу', row: 'б', column: 'у', isDiacritic: true},
+    {id: 94, hiragana: 'べ', katakana: 'ベ', transcription: 'бэ', row: 'б', column: 'э', isDiacritic: true},
+    {id: 95, hiragana: 'ぼ', katakana: 'ボ', transcription: 'бо', row: 'б', column: 'о', isDiacritic: true},
+    {id: 96, hiragana: 'びゃ', katakana: 'ビャ', transcription: 'бя', row: 'б', column: 'я', isDiacritic: true, isYouon: true},
+    {id: 97, hiragana: 'びゅ', katakana: 'ビュ', transcription: 'бю', row: 'б', column: 'ю', isDiacritic: true, isYouon: true},
+    {id: 98, hiragana: 'びょ', katakana: 'ビョ', transcription: 'бё', row: 'б', column: 'ё', isDiacritic: true, isYouon: true},
 
-    {id: 99, hiragana: 'ぱ', katakana: 'パ', transcription: 'па', row: 'п', column: 'а', isDakuten: true},
-    {id: 100, hiragana: 'ぴ', katakana: 'ピ', transcription: 'пи', row: 'п', column: 'и', isDakuten: true},
-    {id: 101, hiragana: 'ぷ', katakana: 'プ', transcription: 'пу', row: 'п', column: 'у', isDakuten: true},
-    {id: 102, hiragana: 'ぺ', katakana: 'ペ', transcription: 'пэ', row: 'п', column: 'э', isDakuten: true},
-    {id: 103, hiragana: 'ぽ', katakana: 'ポ', transcription: 'по', row: 'п', column: 'о', isDakuten: true},
-    {id: 104, hiragana: 'ぴゃ', katakana: 'ピャ', transcription: 'пя', row: 'п', column: 'я', isDakuten: true, isYouon: true},
-    {id: 105, hiragana: 'ぴゅ', katakana: 'ピュ', transcription: 'пю', row: 'п', column: 'ю', isDakuten: true, isYouon: true},
-    {id: 106, hiragana: 'ぴょ', katakana: 'ピョ', transcription: 'пё', row: 'п', column: 'ё', isDakuten: true, isYouon: true}
+    {id: 99, hiragana: 'ぱ', katakana: 'パ', transcription: 'па', row: 'п', column: 'а', isDiacritic: true},
+    {id: 100, hiragana: 'ぴ', katakana: 'ピ', transcription: 'пи', row: 'п', column: 'и', isDiacritic: true},
+    {id: 101, hiragana: 'ぷ', katakana: 'プ', transcription: 'пу', row: 'п', column: 'у', isDiacritic: true},
+    {id: 102, hiragana: 'ぺ', katakana: 'ペ', transcription: 'пэ', row: 'п', column: 'э', isDiacritic: true},
+    {id: 103, hiragana: 'ぽ', katakana: 'ポ', transcription: 'по', row: 'п', column: 'о', isDiacritic: true},
+    {id: 104, hiragana: 'ぴゃ', katakana: 'ピャ', transcription: 'пя', row: 'п', column: 'я', isDiacritic: true, isYouon: true},
+    {id: 105, hiragana: 'ぴゅ', katakana: 'ピュ', transcription: 'пю', row: 'п', column: 'ю', isDiacritic: true, isYouon: true},
+    {id: 106, hiragana: 'ぴょ', katakana: 'ピョ', transcription: 'пё', row: 'п', column: 'ё', isDiacritic: true, isYouon: true}
   ];
   rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];

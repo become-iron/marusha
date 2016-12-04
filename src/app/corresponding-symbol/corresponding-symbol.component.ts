@@ -14,6 +14,10 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
   proposed_options: SyllabaryItem[];
   is_right_previous_choice: boolean;
   previous_right_option: SyllabaryItem;
+  // TODO добавить сохранение прогресса
+  // TODO добавить опции выбора символов: ёоны, дакутэны и т.д.
+  // TODO разобраться: обновление view при переключении каны
+  // TODO рефакторинг
 
   constructor(
     private route: ActivatedRoute,
@@ -53,11 +57,11 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
   }
 
   increaseProgress() {
-    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress++ : 1;
+    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress + 1 : 1;
   }
 
   reduceProgress() {
-    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress-- : -1;
+    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress - 1 : -1;
   }
 
   get3RandomSyllables(): SyllabaryItem[] {
@@ -90,6 +94,6 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
   }
 
   gotoProgressTable() {
-    // TODO сначала надо добавить сохранение прогресса
+    // TODO
   }
 }
