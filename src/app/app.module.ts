@@ -14,6 +14,7 @@ import { CorrespondingSymbolComponent } from './corresponding-symbol/correspondi
 import { ProgressTableComponent } from './progress-table/progress-table.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SignToTranscriptionComponent } from './sign-to-transcription/sign-to-transcription.component';
+import { TranscriptionToSignComponent } from './transcription-to-sign/transcription-to-sign.component';
 
 
 
@@ -28,6 +29,7 @@ import { SignToTranscriptionComponent } from './sign-to-transcription/sign-to-tr
     ProgressTableComponent,
     SettingsComponent,
     SignToTranscriptionComponent,
+    TranscriptionToSignComponent,
   ],
   imports: [
     BrowserModule,

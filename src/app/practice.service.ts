@@ -14,6 +14,12 @@ export class PracticeService {
     settings: {}
   };
 
+  transcriptionToSign = {
+    hiragana: {},
+    katakana: {},
+    settings: {}
+  };
+
   // TODO доделать работу с localstorage
   constructor() {
     if (typeof localStorage['correspondingSymbol'] != 'undefined') {
@@ -21,6 +27,9 @@ export class PracticeService {
     }
     if (typeof localStorage['signToTranscription'] != 'undefined') {
       this.signToTranscription = JSON.parse(localStorage['signToTranscription']);
+    }
+    if (typeof localStorage['transcriptionToSign'] != 'undefined') {
+      this.transcriptionToSign = JSON.parse(localStorage['transcriptionToSign']);
     }
   }
 
@@ -45,4 +54,18 @@ export class PracticeService {
     this.signToTranscription[key] = data;
     localStorage['signToTranscription'] = JSON.stringify(this.signToTranscription);
   }
+
+
+  /*transcriptionToSign*/
+  getTranscriptionToSignData(kana: string) {
+    return this.signToTranscription[kana];
+  }
+  setTranscriptionToSignData(key: string, data) {
+    this.signToTranscription[key] = data;
+    localStorage['signToTranscription'] = JSON.stringify(this.signToTranscription);
+  }
+
+
+
+
 }

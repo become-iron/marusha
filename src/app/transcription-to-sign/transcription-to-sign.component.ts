@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TableOfKana, Syllable } from '../syllabary';
-import { PracticeService } from '../practice.service';
+import {TableOfKana, Syllable} from "../syllabary";
+import {PracticeService} from "../practice.service";
 
 @Component({
-  selector: 'app-corresponding-symbol',
-  templateUrl: './corresponding-symbol.component.html',
-  styleUrls: ['./corresponding-symbol.component.css'],
+  selector: 'app-transcription-to-sign',
+  templateUrl: './transcription-to-sign.component.html',
+  styleUrls: ['./transcription-to-sign.component.css'],
   providers: [PracticeService]
 })
-export class CorrespondingSymbolComponent extends TableOfKana implements OnInit {
+export class TranscriptionToSignComponent extends TableOfKana implements OnInit {
   other_kana: string;
 
-  progress: any;  // {id: progress}
+  progress: any;
   progress_max: number = 3;
   progress_min: number = -3;
 
@@ -27,9 +27,6 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
 
   show_syllable_detail: boolean = false;
   show_progress_table: boolean = false;
-  // TODO доработать сохранение прогресса
-  // TODO разобраться: обновление view при переключении каны
-  // TODO рефакторинг
 
   constructor(
     private route: ActivatedRoute,
@@ -45,9 +42,9 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
         // TODO
-        this.progress = this.practiceService.getCorrespondingSymbolData(this.kana);
-        // this.flag_diacritic = this.practiceService.getCorrespondingSymbolData('flag_diacritic');
-        // this.flag_youon = this.practiceService.getCorrespondingSymbolData('flag_youon');
+        this.progress = this.practiceService.getTranscriptionToSignData(this.kana);
+        // this.flag_diacritic = this.practiceService.getTranscriptionToSignData('flag_diacritic');
+        // this.flag_youon = this.practiceService.getTranscriptionToSignData('flag_youon');
 
         this.updateOptions();
       });
@@ -55,16 +52,19 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
 
   updateOptions() {
     // TODO optimize?
-    this.proposed_options = this.table
+    let _ = this.table
       .filter(syllable => this.progress[syllable.id] != this.progress_max
-        && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-      .nRandomElements(4);
+      && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
+      && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+      .slice(0, 8);
+    // if (_.length == 0) {}  // TODO
+    _.shuffle();
+    this.proposed_options = _.slice(4);
     this.right_option = this.proposed_options.randomElement();
   }
 
   checkChoice(syllable: Syllable) {
-    if (syllable === this.right_option) {
+    if (syllable == this.right_option) {
       this.is_right_previous_choice = true;
       let id = this.right_option.id;
       this.progress[id] = typeof this.progress[id] != 'undefined' ? this.progress[id] + 1 : 1;
@@ -80,9 +80,9 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
       }
     }
     // TODO сохранение результатов
-    this.practiceService.setCorrespondingSymbolData(this.kana, this.progress);
-    // this.practiceService.setCorrespondingSymbolData('flag_diacritic', this.flag_diacritic);
-    // this.practiceService.setCorrespondingSymbolData('flag_youon', this.flag_youon);
+    this.practiceService.setTranscriptionToSignData(this.kana, this.progress);
+    // this.practiceService.setTranscriptionToSignData('flag_diacritic', this.flag_diacritic);
+    // this.practiceService.setTranscriptionToSignData('flag_youon', this.flag_youon);
 
     this.previous_syllable = this.right_option;
     this.updateOptions();

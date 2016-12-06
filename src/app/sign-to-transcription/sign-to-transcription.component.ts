@@ -25,7 +25,6 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
   flag_diacritic: boolean = true;
   flag_youon: boolean = true;
 
-  learned_rows: string[];
   transcription_field: string;
 
   show_syllable_detail: boolean = false;
