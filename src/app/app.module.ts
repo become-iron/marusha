@@ -11,6 +11,8 @@ import { TableComponent } from './table/table.component';
 import { AboutComponent } from './about/about.component';
 import { TableItemDetailComponent } from './table-item-detail/table-item-detail.component';
 import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
+import { ProgressTableComponent } from './progress-table/progress-table.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -22,6 +24,8 @@ import { CorrespondingSymbolComponent } from './corresponding-symbol/correspondi
     AboutComponent,
     TableItemDetailComponent,
     CorrespondingSymbolComponent,
+    ProgressTableComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

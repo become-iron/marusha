@@ -1,12 +1,14 @@
-<table *ngIf="table" class="table table-hover table-sm">
+<table class="table table-sm">
   <tr>
     <th></th>
     <th *ngFor="let column of columns">{{column}}</th>
   </tr>
   <tr *ngFor="let row of rows">
     <th>{{row}}</th>
-    <td *ngFor="let column of columns" (click)="gotoTableItemDetail(row, column)">
+    <td *ngFor="let column of columns" (click)="showSyllableDetail(row, column)">
       {{getItemSign(row, column)}}
     </td>
   </tr>
 </table>
+
+<app-table-item-detail *ngIf="syllable_to_detail" [syllable]="syllable_to_detail" [kana]="kana"></app-table-item-detail>

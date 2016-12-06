@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { TableOfKana, SyllabaryItem } from '../syllabary';
+import { PracticeService } from '../practice.service';
 
 @Component({
   selector: 'app-corresponding-symbol',
   templateUrl: './corresponding-symbol.component.html',
-  styleUrls: ['./corresponding-symbol.component.css']
+  styleUrls: ['./corresponding-symbol.component.css'],
+  providers: [PracticeService]
 })
 export class CorrespondingSymbolComponent extends TableOfKana implements OnInit {
   other_kana: string;
@@ -14,86 +16,77 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
   proposed_options: SyllabaryItem[];
   is_right_previous_choice: boolean;
   previous_right_option: SyllabaryItem;
-  // TODO добавить сохранение прогресса
-  // TODO добавить опции выбора символов: ёоны, дакутэны и т.д.
+  progress: any;  // {id: progress}
+
+  progress_max: number = 3;
+  progress_min: number = -3;
+  flag_diacritic: boolean = true;
+  flag_youon: boolean = true;
+
+  show_syllable_detail: boolean = false;
+  show_progress_table: boolean = false;
+  // TODO доработать сохранение прогресса
   // TODO разобраться: обновление view при переключении каны
   // TODO рефакторинг
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private practiceService: PracticeService
   ) {
     super();
-    this.progress_max = 2;
-    this.progress_max = -2;
   }
 
   ngOnInit() {
-    this.route.params
-      .forEach((params: Params) => {
-        if (params['kana'] === 'hiragana') {
-          this.kana = 'hiragana';
-          this.other_kana = 'katakana';
-        }
-        else if (params['kana'] === 'katakana') {
-          this.kana = 'katakana';
-          this.other_kana = 'hiragana';
-        }
-        else {
-          // TODO обдумать: перенапрявлять на главную, или открывать хирагану, или 404
-          // this.table = hiragana;
-          this.router.navigate(['/about']);
-        }
+    this.route.data
+      .subscribe(params => {
+        this.kana = params['kana'];
+        this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
+
+        // TODO
+        this.progress = this.practiceService.getCorrespondingSymbolData(this.kana);
+        // this.flag_diacritic = this.practiceService.getCorrespondingSymbolData('flag_diacritic');
+        // this.flag_youon = this.practiceService.getCorrespondingSymbolData('flag_youon');
+
+        this.updateOptions();
       });
-    this.updateOptions();
   }
 
   updateOptions() {
-    this.right_option = this.getRandomUnstudiedSyllable();
-    this.proposed_options = this.get3RandomSyllables();
-    this.proposed_options.push(this.right_option);
-    this.proposed_options.shuffle();
-    console.table(this.table.filter(obj => typeof obj.progress != 'undefined'));
-  }
-
-  increaseProgress() {
-    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress + 1 : 1;
-  }
-
-  reduceProgress() {
-    this.right_option.progress = typeof this.right_option.progress != 'undefined' ? this.right_option.progress - 1 : -1;
-  }
-
-  get3RandomSyllables(): SyllabaryItem[] {
-    return [this.table.randomElement(), this.table.randomElement(), this.table.randomElement()]
+    // TODO optimize?
+    this.proposed_options = this.table
+      .filter(syllable => this.progress[syllable.id] != this.progress_max
+        && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
+        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+      .nRandomElements(4);
+    this.right_option = this.proposed_options.randomElement();
   }
 
   checkChoice(syllable: SyllabaryItem) {
     if (syllable === this.right_option) {
       this.is_right_previous_choice = true;
-      this.increaseProgress();
+      let id = this.right_option.id;
+      this.progress[id] = typeof this.progress[id] != 'undefined' ? this.progress[id] + 1 : 1;
     }
     else {
       this.is_right_previous_choice = false;
-      this.reduceProgress();
+      let id = this.right_option.id;
+      if (typeof this.progress[id] == 'undefined') {
+        this.progress[id] = -1;
+      }
+      else if (this.progress[id] != this.progress_min) {
+        this.progress[id]--;
+      }
     }
+    // TODO сохранение результатов
+    this.practiceService.setCorrespondingSymbolData(this.kana, this.progress);
+    // this.practiceService.setCorrespondingSymbolData('flag_diacritic', this.flag_diacritic);
+    // this.practiceService.setCorrespondingSymbolData('flag_youon', this.flag_youon);
+
     this.previous_right_option = this.right_option;
     this.updateOptions();
   }
 
   skip() {
-    this.reduceProgress();
-    this.is_right_previous_choice = false;
-    this.previous_right_option = this.right_option;
-    this.updateOptions();
-  }
-
-  gotoTableItemDetail() {
-    let url = `/table/${this.kana}/${this.right_option[this.kana]}`;
-    this.router.navigate([url]);
-  }
-
-  gotoProgressTable() {
-    // TODO
+    this.checkChoice(null);
   }
 }

@@ -12,7 +12,6 @@ export interface SyllabaryItem {
   readonly column: string,
   readonly isDiacritic?: boolean, // с диакритиком (https://ru.wikipedia.org/wiki/Дакутэн и https://ru.wikipedia.org/wiki/Хандакутэн)
   readonly isYouon?: boolean,  // ёон (https://ru.wikipedia.org/wiki/Ёон)
-  progress?: number
 }
 
 
@@ -145,8 +144,6 @@ export class TableOfKana {
   ];
   rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
-  progress_max: number;
-  progress_min: number;
 
   getItem(row: string, column:string): SyllabaryItem {
     return this.table.find(obj => obj.row === row && obj.column === column);
@@ -160,9 +157,5 @@ export class TableOfKana {
 
   getSyllableBySign(sign: string): SyllabaryItem {
     return this.table.find(obj => obj.hiragana == sign || obj.katakana == sign);
-  }
-
-  getRandomUnstudiedSyllable(): SyllabaryItem {
-    return this.table.filter(syllable => syllable.progress != this.progress_max).randomElement();
   }
 }

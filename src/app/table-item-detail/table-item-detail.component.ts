@@ -1,37 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-
-import { SyllabaryItem, TableOfKana } from '../syllabary';
-import { getWordsBySign, WordOrPhrase } from  '../japaneseWordsAndPhrases';
+import { Component, Input } from '@angular/core';
+import { TableOfKana, SyllabaryItem } from '../syllabary';
+import { getWordsBySign, JapaneseWord } from  '../japaneseWordsAndPhrases';
 
 @Component({
   selector: 'app-table-item-detail',
   templateUrl: './table-item-detail.component.html',
   styleUrls: ['./table-item-detail.component.css']
 })
-export class TableItemDetailComponent extends TableOfKana implements OnInit {
-  item: SyllabaryItem;
-  words: WordOrPhrase[];
-
-  constructor(
-    private route: ActivatedRoute,
-    private location: Location,
-  ) {
+export class TableItemDetailComponent extends TableOfKana {
+  @Input() kana: string;
+  @Input() syllable = <SyllabaryItem>null;  // TEMP
+  constructor() {
     super();
   }
 
-  ngOnInit() {
-    this.route.params
-      .forEach((params: Params) => {
-        this.kana = params['kana'];
-        let sign = params['sign'];
-        this.item = this.getSyllableBySign(sign);
-        this.words = getWordsBySign(this.kana, sign);
-      });
+  getWords(): JapaneseWord[] {
+    // TODO ограничения на количество слов
+    return getWordsBySign(this.kana, this.syllable[this.kana]);
   }
 
-  goBack(): void {
-    this.location.back();
+  getPhrases() {
+    // TODO
+  }
+
+  hideSyllableDetail() {
+    this.syllable = null;
   }
 }

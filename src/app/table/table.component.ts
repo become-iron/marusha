@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { TableOfKana } from '../syllabary'
+import {TableOfKana, SyllabaryItem} from '../syllabary'
 
 @Component({
   selector: 'app-table',
@@ -9,34 +9,22 @@ import { TableOfKana } from '../syllabary'
   styleUrls: ['./table.component.css']
 })
 export class TableComponent extends TableOfKana implements OnInit{
+  kana: string;
+  syllable_to_detail: SyllabaryItem;
+
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
   ) {
     super();
   }
 
   ngOnInit() {
-    this.route.params
-      .forEach((params: Params) => {
-        if (params['kana'] === 'hiragana') {
-          this.kana = 'hiragana';
-        }
-        else if (params['kana'] === 'katakana') {
-          this.kana = 'katakana';
-        }
-        else {
-          // TODO обдумать: перенапрявлять на главную, или открывать хирагану, или 404
-          // this.table = hiragana;
-          this.router.navigate(['/about']);
-        }
-      });
+    this.route
+      .data
+      .subscribe(params => this.kana = params['kana']);
   }
 
-  gotoTableItemDetail(row: string, column: string) {
-    let item = this.getItem(row, column);
-    if (typeof item == 'undefined') {return;}  // если пустая ячейка
-    let url = `/table/${this.kana}/${item[this.kana]}`;
-    this.router.navigate([url]);
+  showSyllableDetail(row: string, column: string) {
+    this.syllable_to_detail = this.getItem(row, column);
   }
 }

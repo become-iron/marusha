@@ -1,8 +1,11 @@
-<button (click)="goBack()">Назад</button>
-<div class="big-sign">{{item[kana]}}</div>
+<div *ngIf="syllable">
+<div class="big-sign">{{syllable[kana]}}</div>
 <div>{{kana}}</div>
-<div>{{item.transcription}}</div>
+<div>{{syllable.transcription}}</div>
 
 <div>
-  <div *ngFor="let word of words">{{word[kana]}} - {{word.translation}}</div>
+  <div *ngFor="let word of getWords()">{{word[kana]}} - {{word.translation}}</div>
+</div>
+
+<button (click)="hideSyllableDetail()">Закрыть</button>
 </div>
