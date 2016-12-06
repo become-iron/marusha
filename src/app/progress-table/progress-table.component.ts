@@ -17,10 +17,21 @@ export class ProgressTableComponent extends TableOfKana implements OnInit {
   ngOnInit() {
   }
 
-  getProgressStyle(row, column, n) {
-    // TODO оптимизировать
+  getProgressStyle(row, column): any {
     let syllable = this.getItem(row, column);
-    if (typeof syllable == 'undefined') {return false;}
-    return this.progress[syllable.id] == n;
+    if (typeof syllable == 'undefined') {
+      return {'progress0': true};
+    }
+    let syllable_progress = this.progress[syllable.id];
+    let style = {
+      'progress3': syllable_progress == 3,
+      'progress2': syllable_progress == 2,
+      'progress1': syllable_progress == 1,
+      'progress0': syllable_progress == 0,
+      'progress1m': syllable_progress == -1,
+      'progress2m': syllable_progress == -2,
+      'progress3m': syllable_progress == -3,
+    };
+    return style;
   }
 }

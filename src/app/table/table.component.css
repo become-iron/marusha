@@ -1,9 +1,12 @@
 table {
-  border-collapse: collapse;
-  max-width: 70%;
+  width: auto;
 }
 
 table, th, td {
   border: 1px solid black;
   text-align: center;
+}
+
+td, th {
+  padding: .5rem;
 }

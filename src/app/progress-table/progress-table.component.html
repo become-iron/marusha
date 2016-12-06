@@ -1,4 +1,4 @@
-<table class="table table-sm">
+<table class="table table-bordered">
   <tr>
     <th></th>
     <th *ngFor="let column of columns">{{column}}</th>
@@ -6,16 +6,7 @@
   <tr *ngFor="let row of rows">
     <th>{{row}}</th>
     <td *ngFor="let column of columns"
-        [ngClass]="{
-        progress3: getProgressStyle(row, column, 3),
-        progress2: getProgressStyle(row, column, 2),
-        progress1: getProgressStyle(row, column, 1),
-        progress0: getProgressStyle(row, column, 0),
-        progress1m: getProgressStyle(row, column, -1),
-        progress2m: getProgressStyle(row, column, -2),
-        progress3m: getProgressStyle(row, column, -3)
-        }"
-    >
+        [ngClass]="getProgressStyle(row, column)">
       {{getItemSign(row, column)}}
     </td>
   </tr>
