@@ -11,12 +11,6 @@ import { PracticeService } from '../practice.service';
   providers: [PracticeService]
 })
 export class CorrespondingSymbolComponent extends TableOfKana implements OnInit {
-  other_kana: string;
-
-  progress: any;  // {id: progress}
-  progress_max: number = 3;
-  progress_min: number = -3;
-
   right_option: Syllable;
   proposed_options: Syllable[];
   is_right_previous_choice: boolean;
@@ -54,12 +48,18 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
   }
 
   updateOptions() {
-    // TODO optimize?
-    this.proposed_options = this.table
+    let _ = this.table
       .filter(syllable => this.progress[syllable.id] != this.progress_max
         && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
         && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-      .nRandomElements(4);
+    if (_.length == 0) {
+      this.is_all_studied = true;
+    }
+    else if (_.length <= 3) {
+      // CHECK TODO возможно нахождение двух одинаковых символов в массиве
+      _.push(...this.table.nRandomElements(4-_.length))
+    }
+    this.proposed_options =_.nRandomElements(4);
     this.right_option = this.proposed_options.randomElement();
   }
 

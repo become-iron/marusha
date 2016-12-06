@@ -8,6 +8,7 @@ import { TranscriptionToSignComponent } from './transcription-to-sign/transcript
 import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
 import { SettingsComponent } from "./settings/settings.component";
 import { AboutComponent } from './about/about.component';
+import { SimiliarSignsComponent } from './similiar-signs/similiar-signs.component';
 
 
 const appRoutes: Routes = [
@@ -16,13 +17,19 @@ const appRoutes: Routes = [
   { path: 'settings', component: SettingsComponent, pathMatch: 'full' },
   { path: 'table/hiragana', component: TableComponent, data: {kana: 'hiragana'} },
   { path: 'table/katakana', component: TableComponent, data: {kana: 'katakana'} },
+
   { path: 'practice/sign-to-transcription/hiragana', component: SignToTranscriptionComponent, data: {kana: 'hiragana'}  },
   { path: 'practice/sign-to-transcription/katakana', component: SignToTranscriptionComponent, data: {kana: 'katakana'}  },
+
   { path: 'practice/transcription-to-sign/hiragana', component: TranscriptionToSignComponent, data: {kana: 'hiragana'}  },
   { path: 'practice/transcription-to-sign/katakana', component: TranscriptionToSignComponent, data: {kana: 'katakana'}  },
-  // { path: 'practice/similar-signs/:kana', component: null },
+
   { path: 'practice/corresponding-symbol/hiragana', component: CorrespondingSymbolComponent, data: {kana: 'hiragana'} },
   { path: 'practice/corresponding-symbol/katakana', component: CorrespondingSymbolComponent, data: {kana: 'katakana'} },
+
+  { path: 'practice/similar-signs/hiragana', component: SimiliarSignsComponent, data: {kana: 'hiragana'} },
+  { path: 'practice/similar-signs/katakana', component: SimiliarSignsComponent, data: {kana: 'katakana'} },
+
   // { path: 'practice/draw/:kana', component: null },
   { path: '**', redirectTo: '/about' },
 ];

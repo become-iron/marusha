@@ -17,6 +17,8 @@ export interface Syllable {
 
 export class TableOfKana {
   kana: string;
+  other_kana: string;
+
   table: Syllable[] = [
     {id: 0,  hiragana: 'あ', katakana: 'ア', transcription: 'а',  row: '',  column: 'а'},
     {id: 1,  hiragana: 'い', katakana: 'イ', transcription: 'и',  row: '',  column: 'и'},
@@ -154,6 +156,11 @@ export class TableOfKana {
     {id: 105, hiragana: 'ぴゅ', katakana: 'ピュ', transcription: 'пю', row: 'п', column: 'ю', isDiacritic: true, isYouon: true},
     {id: 106, hiragana: 'ぴょ', katakana: 'ピョ', transcription: 'пё', row: 'п', column: 'ё', isDiacritic: true, isYouon: true}
   ];
+
+  progress: any;  // {id: progress}
+  progress_max: number = 3;
+  progress_min: number = -3;
+  is_all_studied: boolean = false;
 
   rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];

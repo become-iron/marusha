@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import {TableOfKana, Syllable} from "../syllabary";
-import {PracticeService} from "../practice.service";
+import { TableOfKana, Syllable } from "../syllabary";
+import { PracticeService } from "../practice.service";
 
 @Component({
-  selector: 'app-transcription-to-sign',
-  templateUrl: './transcription-to-sign.component.html',
-  styleUrls: ['./transcription-to-sign.component.css'],
+  selector: 'app-similiar-signs',
+  templateUrl: './similiar-signs.component.html',
+  styleUrls: ['./similiar-signs.component.css'],
   providers: [PracticeService]
 })
-export class TranscriptionToSignComponent extends TableOfKana implements OnInit {
+export class SimiliarSignsComponent extends TableOfKana implements OnInit {
+  // TODO делать что-то с таблицей?
   right_option: Syllable;
   proposed_options: Syllable[];
   is_right_previous_choice: boolean;
   previous_syllable: Syllable;
 
-  flag_diacritic: boolean = true;
-  flag_youon: boolean = true;
-
   show_syllable_detail: boolean = false;
   show_progress_table: boolean = false;
+
+  similar_signs_ids = {
+    hiragana: [0, 1, 9, 11, 12, 13, 18, 19, 24, 25, 26, 27, 28, 29, 33, 34, 37, 38, 39, 40, 41, 42, 43, 44],
+    katakana: [0, 1, 2, 4, 5, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 31, 34, 36, 37, 38, 39, 40, 41, 44, 45]
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -36,21 +39,18 @@ export class TranscriptionToSignComponent extends TableOfKana implements OnInit 
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
         // TODO
-        this.progress = this.practiceService.getTranscriptionToSignData(this.kana);
-        // this.flag_diacritic = this.practiceService.getTranscriptionToSignData('flag_diacritic');
-        // this.flag_youon = this.practiceService.getTranscriptionToSignData('flag_youon');
+        this.progress = this.practiceService.getSimilarSignsData(this.kana);
+        // this.flag_diacritic = this.practiceService.getSimilarSignsData('flag_diacritic');
+        // this.flag_youon = this.practiceService.getSimilarSignsData('flag_youon');
 
         this.updateOptions();
       });
   }
 
   updateOptions() {
-    // TODO optimize?
     let _ = this.table
       .filter(syllable => this.progress[syllable.id] != this.progress_max
-      && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-      && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-      .slice(0, 8);
+        && this.similar_signs_ids[this.kana].includes(syllable.id));
     if (_.length == 0) {
       this.is_all_studied = true;
     }
@@ -80,9 +80,9 @@ export class TranscriptionToSignComponent extends TableOfKana implements OnInit 
       }
     }
     // TODO сохранение результатов
-    this.practiceService.setTranscriptionToSignData(this.kana, this.progress);
-    // this.practiceService.setTranscriptionToSignData('flag_diacritic', this.flag_diacritic);
-    // this.practiceService.setTranscriptionToSignData('flag_youon', this.flag_youon);
+    this.practiceService.setSimilarSignsData(this.kana, this.progress);
+    // this.practiceService.setSimilarSignsData('flag_diacritic', this.flag_diacritic);
+    // this.practiceService.setSimilarSignsData('flag_youon', this.flag_youon);
 
     this.previous_syllable = this.right_option;
     this.updateOptions();
@@ -91,4 +91,5 @@ export class TranscriptionToSignComponent extends TableOfKana implements OnInit 
   skip() {
     this.checkChoice(null);
   }
+
 }

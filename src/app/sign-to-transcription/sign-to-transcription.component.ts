@@ -11,12 +11,6 @@ import {PracticeService} from "../practice.service";
   providers: [PracticeService]
 })
 export class SignToTranscriptionComponent extends TableOfKana implements OnInit {
-  other_kana: string;
-
-  progress: any;
-  progress_max: number = 3;
-  progress_min: number = -3;
-
   current_syllable: Syllable;
   is_right_previous_answer: boolean;
   previous_syllable: Syllable;
@@ -61,7 +55,13 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
         && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
         && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
       .slice(0, 8);
-    // if (_.length == 0) {}  // TODO
+    if (_.length == 0) {
+      this.is_all_studied = true;
+    }
+    else if (_.length <= 3) {
+      // CHECK TODO возможно нахождение двух одинаковых символов в массиве
+      _.push(...this.table.nRandomElements(4-_.length))
+    }
     _.shuffle();
     this.current_syllable = _[0];
   }

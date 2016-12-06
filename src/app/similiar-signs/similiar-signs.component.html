@@ -1,0 +1,19 @@
+<div class="big-sign" (click)="show_syllable_detail = !show_syllable_detail">
+  {{right_option.transcription}}
+</div>
+<div>
+  <button *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[kana]}}</button>
+</div>
+<div>
+  <button (click)="skip()">Пропустить</button>
+</div>
+<div class="previous_syllable"
+     *ngIf="previous_syllable"
+     [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}"
+>
+  {{previous_syllable[kana]}} - {{previous_syllable[other_kana]}} - {{previous_syllable.transcription}}
+</div>
+<div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
+
+<app-table-item-detail *ngIf="show_syllable_detail" [syllable]="right_option" [kana]="kana"></app-table-item-detail>
+<app-progress-table *ngIf="show_progress_table" [progress]="progress" [kana]="kana"></app-progress-table>
