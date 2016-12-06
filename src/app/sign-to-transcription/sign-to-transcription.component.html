@@ -1,15 +1,15 @@
 <div class="big-sign" (click)="show_syllable_detail = !show_syllable_detail">
-  {{right_option[kana]}}
+  {{current_syllable[kana]}}
 </div>
 <div>
-  <button *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[other_kana]}}</button>
+  <input type="text" [(ngModel)]="transcription_field" (keyup)="checkAnswer()">
 </div>
 <div>
   <button (click)="skip()">Пропустить</button>
 </div>
 <div class="previous_syllable"
      *ngIf="previous_syllable"
-     [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}"
+     [ngClass]="{right: is_right_previous_answer, wrong: !is_right_previous_answer}"
 >
   {{previous_syllable[kana]}} - {{previous_syllable[other_kana]}} - {{previous_syllable.transcription}}
 </div>
@@ -20,5 +20,5 @@
 <input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon" checked>
 <label for="flag_youon">Ёоны</label>
 
-<app-table-item-detail *ngIf="show_syllable_detail" [syllable]="right_option" [kana]="kana"></app-table-item-detail>
+<app-table-item-detail *ngIf="show_syllable_detail" [syllable]="current_syllable" [kana]="kana"></app-table-item-detail>
 <app-progress-table *ngIf="show_progress_table" [progress]="progress" [kana]="kana"></app-progress-table>

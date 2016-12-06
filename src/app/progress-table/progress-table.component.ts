@@ -7,8 +7,8 @@ import {TableOfKana} from "../syllabary";
   styleUrls: ['./progress-table.component.css']
 })
 export class ProgressTableComponent extends TableOfKana implements OnInit {
-  @Input() kana;
-  @Input() progress;
+  @Input() kana: string;
+  @Input() progress: any;
 
   constructor() {
     super();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TableOfKana, SyllabaryItem } from '../syllabary';
+import { TableOfKana, Syllable } from '../syllabary';
 import { PracticeService } from '../practice.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { PracticeService } from '../practice.service';
 })
 export class CorrespondingSymbolComponent extends TableOfKana implements OnInit {
   other_kana: string;
-  right_option: SyllabaryItem;
-  proposed_options: SyllabaryItem[];
+  right_option: Syllable;
+  proposed_options: Syllable[];
   is_right_previous_choice: boolean;
-  previous_right_option: SyllabaryItem;
+  previous_syllable: Syllable;
   progress: any;  // {id: progress}
 
   progress_max: number = 3;
@@ -61,7 +61,7 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
     this.right_option = this.proposed_options.randomElement();
   }
 
-  checkChoice(syllable: SyllabaryItem) {
+  checkChoice(syllable: Syllable) {
     if (syllable === this.right_option) {
       this.is_right_previous_choice = true;
       let id = this.right_option.id;
@@ -82,7 +82,7 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
     // this.practiceService.setCorrespondingSymbolData('flag_diacritic', this.flag_diacritic);
     // this.practiceService.setCorrespondingSymbolData('flag_youon', this.flag_youon);
 
-    this.previous_right_option = this.right_option;
+    this.previous_syllable = this.right_option;
     this.updateOptions();
   }
 

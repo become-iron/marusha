@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TableOfKana, SyllabaryItem } from '../syllabary';
+import { TableOfKana, Syllable } from '../syllabary';
 import { getWordsBySign, JapaneseWord } from  '../japaneseWordsAndPhrases';
 
 @Component({
@@ -9,7 +9,7 @@ import { getWordsBySign, JapaneseWord } from  '../japaneseWordsAndPhrases';
 })
 export class TableItemDetailComponent extends TableOfKana {
   @Input() kana: string;
-  @Input() syllable = <SyllabaryItem>null;  // TEMP
+  @Input() syllable = <Syllable>null;  // TEMP
   constructor() {
     super();
   }

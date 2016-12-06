@@ -13,6 +13,7 @@ import { TableItemDetailComponent } from './table-item-detail/table-item-detail.
 import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
 import { ProgressTableComponent } from './progress-table/progress-table.component';
 import { SettingsComponent } from './settings/settings.component';
+import { SignToTranscriptionComponent } from './sign-to-transcription/sign-to-transcription.component';
 
 
 
@@ -26,6 +27,7 @@ import { SettingsComponent } from './settings/settings.component';
     CorrespondingSymbolComponent,
     ProgressTableComponent,
     SettingsComponent,
+    SignToTranscriptionComponent,
   ],
   imports: [
     BrowserModule,

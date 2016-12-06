@@ -1,7 +1,7 @@
 import {Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import {TableOfKana, SyllabaryItem} from '../syllabary'
+import {TableOfKana, Syllable} from '../syllabary'
 
 @Component({
   selector: 'app-table',
@@ -10,7 +10,7 @@ import {TableOfKana, SyllabaryItem} from '../syllabary'
 })
 export class TableComponent extends TableOfKana implements OnInit{
   kana: string;
-  syllable_to_detail: SyllabaryItem;
+  syllable_to_detail: Syllable;
 
   constructor(
     private route: ActivatedRoute,
