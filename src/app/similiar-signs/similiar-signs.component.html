@@ -8,10 +8,10 @@
   <button (click)="skip()">Пропустить</button>
 </div>
 <div class="previous_syllable"
-     *ngIf="previous_syllable"
+     *ngIf="previous_right_option"
      [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}"
 >
-  {{previous_syllable[kana]}} - {{previous_syllable[other_kana]}} - {{previous_syllable.transcription}}
+  {{previous_right_option[kana]}} - {{previous_right_option[other_kana]}} - {{previous_right_option.transcription}}
 </div>
 <div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
 

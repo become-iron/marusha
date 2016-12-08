@@ -13,3 +13,21 @@
 .right {
   color: green;
 }
+
+.valid  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.invalid  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.form-control-success {
+  border-color: #5cb85c;
+  background-color: #5cb85c;
+}
+
+.form-control-warning {
+  border-color: #d9534f;
+  background-color: #d9534f;
+}

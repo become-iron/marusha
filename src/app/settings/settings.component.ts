@@ -13,7 +13,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
   }
 
-  static clearHistory() {
+  clearHistory() {
     localStorage.clear();
     console.log('История очищена');
   }

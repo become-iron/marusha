@@ -14,8 +14,9 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
   // TODO делать что-то с таблицей?
   right_option: Syllable;
   proposed_options: Syllable[];
+
   is_right_previous_choice: boolean;
-  previous_syllable: Syllable;
+  previous_right_option: Syllable;
 
   show_syllable_detail: boolean = false;
   show_progress_table: boolean = false;
@@ -41,7 +42,8 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
         this.kana = params['kana'];
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
-        this.progress = this.practiceService.getData(this.practice_name, this.kana);
+        let practice_data = this.practiceService.getData(this.practice_name);
+        this.progress = practice_data[this.kana];
 
         this.updateOptions();
       });
@@ -52,7 +54,7 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
     let filtered = this.table
       .filter(syllable =>
         this.similar_signs_ids[this.kana].includes(syllable.id)
-        && (this.progress[syllable.id] <= this.progress_max || typeof this.progress[syllable.id] == 'undefined'));
+        && (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] == 'undefined'));
 
     if (filtered.length == 0) {
       console.log('всё выучено');
@@ -74,9 +76,14 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
       return;
     }
 
+    // отбор предлагаемых ответов с учётом предыдущего символа
     filtered.shuffle();
     this.proposed_options = filtered.slice(0, 4);
-    this.right_option = this.proposed_options.randomElement();
+    this.right_option = this.proposed_options[0];
+    if (this.right_option == this.previous_right_option) {
+      this.right_option = this.proposed_options[0];
+    }
+    this.proposed_options.shuffle();
   }
 
 
@@ -92,11 +99,11 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
       if (typeof this.progress[id] == 'undefined') {
         this.progress[id] = -1;
       }
-      else if (this.progress[id] != this.progress_min) {
+      else if (this.progress[id] > this.progress_min) {
         this.progress[id]--;
       }
     }
-    this.previous_syllable = this.right_option;
+    this.previous_right_option = this.right_option;
     this.updateOptions();
 
     this.practiceService.setData(this.practice_name, this.kana, this.progress);
@@ -106,5 +113,4 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
   skip() {
     this.checkChoice(null);
   }
-
 }

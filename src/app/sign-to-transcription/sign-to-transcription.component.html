@@ -1,23 +1,27 @@
 <div class="big-sign" (click)="show_syllable_detail = !show_syllable_detail">
   {{current_syllable[kana]}}
 </div>
-<div>
-  <input type="text" [(ngModel)]="transcription_field" (keyup)="checkAnswer()">
+
+<div class="col-xs-4 form-group">
+  <input type="text" class="form-control" [(ngModel)]="transcription_field" (keyup)="checkAnswer(transcription_field)" [ngClass]="transcription_field_style">
 </div>
-<div>
+
+<div class="form-group">
   <button (click)="skip()">Пропустить</button>
+  <button (click)="show_progress_table = !show_progress_table;">Прогресс</button>
 </div>
+
 <div class="previous_syllable"
      *ngIf="previous_syllable"
      [ngClass]="{right: is_right_previous_answer, wrong: !is_right_previous_answer}"
 >
   {{previous_syllable[kana]}} - {{previous_syllable[other_kana]}} - {{previous_syllable.transcription}}
 </div>
-<div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
 
-<input type="checkbox" id="flag_diacritic" [(ngModel)]="flag_diacritic">
+
+<input type="checkbox" id="flag_diacritic" [(ngModel)]="flag_diacritic" (change)="setSettings('flag_diacritic')">
 <label for="flag_diacritic">Диакритики</label>
-<input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon">
+<input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon" (change)="setSettings('flag_youon')">
 <label for="flag_youon">Ёоны</label>
 
 <app-table-item-detail *ngIf="show_syllable_detail" [syllable]="current_syllable" [kana]="kana"></app-table-item-detail>

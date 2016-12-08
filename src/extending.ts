@@ -7,6 +7,7 @@ interface Array<T> {
 }
 
 Array.prototype.randomElement = function () {
+  // http://stackoverflow.com/a/4550514
   return this[Math.floor(Math.random() * this.length)]
 };
 

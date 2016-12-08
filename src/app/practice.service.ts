@@ -6,7 +6,8 @@ export class PracticeService {
     signToTranscription: {
       hiragana: {},
       katakana: {},
-      settings: {}
+      flag_diacritic: null,
+      flag_youon: null
     },
 
     transcriptionToSign: {
@@ -38,11 +39,13 @@ export class PracticeService {
     }
   }
 
-  getData(practice: string, key: string): any {
-    return this.app_data[practice][key];
+  getData(practice: string, key?: string): any {
+    // console.log(this.app_data[practice][key]);
+    return typeof key == 'undefined' ? this.app_data[practice] : this.app_data[practice][key];
   }
 
   setData(practice: string, key: string, data: any): void {
+
     this.app_data[practice][key] = data;
     localStorage['app_data'] = JSON.stringify(this.app_data);
   }
