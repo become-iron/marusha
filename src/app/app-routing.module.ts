@@ -15,6 +15,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/about', pathMatch: 'full' },
   { path: 'about', component: AboutComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsComponent, pathMatch: 'full' },
+
   { path: 'table/hiragana', component: TableComponent, data: {kana: 'hiragana'} },
   { path: 'table/katakana', component: TableComponent, data: {kana: 'katakana'} },
 

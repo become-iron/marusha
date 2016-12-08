@@ -5,7 +5,7 @@
 // элемент азбуки
 export interface Syllable {
   readonly id: number,
-  readonly hiragana: string,  // символ хираганы
+  readonly hiragana?: string,  // символ хираганы
   readonly katakana: string,  // символ катаканы
   readonly transcription: string,
   readonly row: string,
@@ -17,9 +17,9 @@ export interface Syllable {
 
 export class TableOfKana {
   kana: string;
-  other_kana: string;
+  other_kana?: string;
 
-  table: Syllable[] = [
+  readonly table: Syllable[] = [
     {id: 0,  hiragana: 'あ', katakana: 'ア', transcription: 'а',  row: '',  column: 'а'},
     {id: 1,  hiragana: 'い', katakana: 'イ', transcription: 'и',  row: '',  column: 'и'},
     {id: 2,  hiragana: 'う', katakana: 'ウ', transcription: 'у',  row: '',  column: 'у'},
@@ -156,14 +156,14 @@ export class TableOfKana {
     {id: 105, hiragana: 'ぴゅ', katakana: 'ピュ', transcription: 'пю', row: 'п', column: 'ю', isDiacritic: true, isYouon: true},
     {id: 106, hiragana: 'ぴょ', katakana: 'ピョ', transcription: 'пё', row: 'п', column: 'ё', isDiacritic: true, isYouon: true}
   ];
+  readonly rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
+  readonly columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
 
-  progress: any;  // {id: progress}
-  progress_max: number = 3;
-  progress_min: number = -3;
-  is_all_studied: boolean = false;
-
-  rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
-  columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
+  practice_name?: string;
+  progress?: any;  // {id: progress}
+  progress_max?: number = 4;
+  progress_min?: number = -4;
+  is_all_studied?: boolean = false;
 
   getItem(row: string, column:string): Syllable {
     return this.table.find(obj => obj.row === row && obj.column === column);

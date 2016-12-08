@@ -24,6 +24,7 @@ export class ProgressTableComponent extends TableOfKana implements OnInit {
     }
     let syllable_progress = this.progress[syllable.id];
     let style = {
+      'progress4': syllable_progress == 4,
       'progress3': syllable_progress == 3,
       'progress2': syllable_progress == 2,
       'progress1': syllable_progress == 1,
@@ -31,6 +32,7 @@ export class ProgressTableComponent extends TableOfKana implements OnInit {
       'progress1m': syllable_progress == -1,
       'progress2m': syllable_progress == -2,
       'progress3m': syllable_progress == -3,
+      'progress4m': syllable_progress == -4,
     };
     return style;
   }

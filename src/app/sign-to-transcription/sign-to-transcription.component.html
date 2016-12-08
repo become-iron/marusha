@@ -15,9 +15,9 @@
 </div>
 <div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
 
-<input type="checkbox" id="flag_diacritic" [(ngModel)]="flag_diacritic" checked>
+<input type="checkbox" id="flag_diacritic" [(ngModel)]="flag_diacritic">
 <label for="flag_diacritic">Диакритики</label>
-<input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon" checked>
+<input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon">
 <label for="flag_youon">Ёоны</label>
 
 <app-table-item-detail *ngIf="show_syllable_detail" [syllable]="current_syllable" [kana]="kana"></app-table-item-detail>

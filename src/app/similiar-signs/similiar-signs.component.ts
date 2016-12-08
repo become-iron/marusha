@@ -25,12 +25,15 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
     katakana: [0, 1, 2, 4, 5, 6, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 31, 34, 36, 37, 38, 39, 40, 41, 44, 45]
   };
 
+
   constructor(
     private route: ActivatedRoute,
     private practiceService: PracticeService
   ) {
     super();
+    this.practice_name = 'similarSigns';
   }
+
 
   ngOnInit() {
     this.route.data
@@ -38,30 +41,44 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
         this.kana = params['kana'];
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
-        // TODO
-        this.progress = this.practiceService.getSimilarSignsData(this.kana);
-        // this.flag_diacritic = this.practiceService.getSimilarSignsData('flag_diacritic');
-        // this.flag_youon = this.practiceService.getSimilarSignsData('flag_youon');
+        this.progress = this.practiceService.getData(this.practice_name, this.kana);
 
         this.updateOptions();
       });
   }
 
+
   updateOptions() {
-    let _ = this.table
-      .filter(syllable => this.progress[syllable.id] != this.progress_max
-        && this.similar_signs_ids[this.kana].includes(syllable.id));
-    if (_.length == 0) {
+    let filtered = this.table
+      .filter(syllable =>
+        this.similar_signs_ids[this.kana].includes(syllable.id)
+        && (this.progress[syllable.id] <= this.progress_max || typeof this.progress[syllable.id] == 'undefined'));
+
+    if (filtered.length == 0) {
+      console.log('всё выучено');
+      // TODO
       this.is_all_studied = true;
+      return;
     }
-    else if (_.length <= 3) {
-      // CHECK TODO возможно нахождение двух одинаковых символов в массиве
-      _.push(...this.table.nRandomElements(4-_.length))
+    else if (filtered.length <= 3) {
+      // CHECK
+      let additional_filtered = this.table
+        .filter(syllable =>
+          this.similar_signs_ids[this.kana].includes(syllable.id)
+          && !filtered.includes(syllable))
+        .nRandomElements(4 - filtered.length);
+      this.right_option = filtered[0];
+      filtered.push(...additional_filtered);
+      filtered.shuffle();
+      this.proposed_options = filtered.slice(0, 4);  // TODO
+      return;
     }
-    _.shuffle();
-    this.proposed_options = _.slice(0, 4);
+
+    filtered.shuffle();
+    this.proposed_options = filtered.slice(0, 4);
     this.right_option = this.proposed_options.randomElement();
   }
+
 
   checkChoice(syllable: Syllable) {
     if (syllable == this.right_option) {
@@ -79,14 +96,12 @@ export class SimiliarSignsComponent extends TableOfKana implements OnInit {
         this.progress[id]--;
       }
     }
-    // TODO сохранение результатов
-    this.practiceService.setSimilarSignsData(this.kana, this.progress);
-    // this.practiceService.setSimilarSignsData('flag_diacritic', this.flag_diacritic);
-    // this.practiceService.setSimilarSignsData('flag_youon', this.flag_youon);
-
     this.previous_syllable = this.right_option;
     this.updateOptions();
+
+    this.practiceService.setData(this.practice_name, this.kana, this.progress);
   }
+
 
   skip() {
     this.checkChoice(null);

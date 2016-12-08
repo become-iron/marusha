@@ -1,1 +1,11 @@
-<button (click)="clearHistory()">Очистить всю историю</button>
+<p>
+  <label for="kana_font_family">Выбрать шрифт:</label>
+  <select name="kana_font_family" id="kana_font_family" [(ngModel)]="kana_font_family">
+    <option value="bla_bla" selected>bla_bla</option>
+    <option value="bla_bla2">bla_bla2</option>
+  </select>
+</p>
+
+<p>
+  <button (click)="clearHistory()">Очистить всю историю</button>
+</p>

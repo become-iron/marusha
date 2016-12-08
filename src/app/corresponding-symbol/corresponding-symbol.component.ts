@@ -13,6 +13,7 @@ import { PracticeService } from '../practice.service';
 export class CorrespondingSymbolComponent extends TableOfKana implements OnInit {
   right_option: Syllable;
   proposed_options: Syllable[];
+
   is_right_previous_choice: boolean;
   previous_syllable: Syllable;
 
@@ -21,16 +22,16 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
 
   show_syllable_detail: boolean = false;
   show_progress_table: boolean = false;
-  // TODO доработать сохранение прогресса
-  // TODO разобраться: обновление view при переключении каны
-  // TODO рефакторинг
+
 
   constructor(
     private route: ActivatedRoute,
     private practiceService: PracticeService
   ) {
     super();
+    this.practice_name = 'correspondingSymbol';
   }
+
 
   ngOnInit() {
     this.route.data
@@ -38,30 +39,41 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
         this.kana = params['kana'];
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
-        // TODO
-        this.progress = this.practiceService.getCorrespondingSymbolData(this.kana);
-        // this.flag_diacritic = this.practiceService.getCorrespondingSymbolData('flag_diacritic');
-        // this.flag_youon = this.practiceService.getCorrespondingSymbolData('flag_youon');
+        this.progress = this.practiceService.getData(this.practice_name, this.kana);
 
         this.updateOptions();
       });
   }
 
+
   updateOptions() {
-    let _ = this.table
+    let filtered = this.table
       .filter(syllable => this.progress[syllable.id] != this.progress_max
         && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-    if (_.length == 0) {
+        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic));
+
+    if (filtered.length == 0) {
+      console.log('всё выучено');
+      // TODO
       this.is_all_studied = true;
+      return;
     }
-    else if (_.length <= 3) {
-      // CHECK TODO возможно нахождение двух одинаковых символов в массиве
-      _.push(...this.table.nRandomElements(4-_.length))
+    else if (filtered.length <= 3) {
+      // CHECK
+      let additional_filtered = this.table
+        .filter(syllable => !filtered.includes(syllable))
+        .nRandomElements(4 - filtered.length);
+      this.right_option = filtered[0];
+      filtered.push(...additional_filtered);
+      filtered.shuffle();
+      this.proposed_options = filtered.slice(0, 4);  // TODO
+      return;
     }
-    this.proposed_options =_.nRandomElements(4);
+
+    this.proposed_options = filtered.nRandomElements(4);
     this.right_option = this.proposed_options.randomElement();
   }
+
 
   checkChoice(syllable: Syllable) {
     if (syllable === this.right_option) {
@@ -79,14 +91,12 @@ export class CorrespondingSymbolComponent extends TableOfKana implements OnInit 
         this.progress[id]--;
       }
     }
-    // TODO сохранение результатов
-    this.practiceService.setCorrespondingSymbolData(this.kana, this.progress);
-    // this.practiceService.setCorrespondingSymbolData('flag_diacritic', this.flag_diacritic);
-    // this.practiceService.setCorrespondingSymbolData('flag_youon', this.flag_youon);
-
     this.previous_syllable = this.right_option;
     this.updateOptions();
+
+    this.practiceService.setData(this.practice_name, this.kana, this.progress);
   }
+
 
   skip() {
     this.checkChoice(null);

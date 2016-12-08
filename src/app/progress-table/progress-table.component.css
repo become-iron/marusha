@@ -1,3 +1,6 @@
+.progress4 {
+  background-color: #5dd364;
+}
 .progress3 {
   background-color: #84d889;
 }
@@ -18,6 +21,9 @@
 }
 .progress3m {
   background-color: #d37774;
+}
+.progress4m {
+  background-color: #d8615d;
 }
 
 table {

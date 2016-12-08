@@ -26,12 +26,15 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
 
   was_mistake: boolean = false;
 
+
   constructor(
     private route: ActivatedRoute,
     private practiceService: PracticeService
   ) {
     super();
+    this.practice_name = 'signToTranscription';
   }
+
 
   ngOnInit() {
     this.route.data
@@ -39,10 +42,7 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
         this.kana = params['kana'];
         this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
 
-        // TODO
-        this.progress = this.practiceService.getSignToTranscriptionData(this.kana);
-        // this.flag_diacritic = this.practiceService.getCorrespondingSymbolData('flag_diacritic');
-        // this.flag_youon = this.practiceService.getCorrespondingSymbolData('flag_youon');
+        this.progress = this.practiceService.getData(this.practice_name, this.kana);
 
         this.getTask();
       });
@@ -50,21 +50,23 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
 
 
   getTask() {
-    let _ = this.table
+    let filtered = this.table
       .filter(syllable => this.progress[syllable.id] != this.progress_max
         && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
         && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-      .slice(0, 8);
-    if (_.length == 0) {
+      .slice(0, 5);
+
+    if (filtered.length == 0) {
+      console.log('всё выучено');
+      // TODO
       this.is_all_studied = true;
+      return;
     }
-    else if (_.length <= 3) {
-      // CHECK TODO возможно нахождение двух одинаковых символов в массиве
-      _.push(...this.table.nRandomElements(4-_.length))
-    }
-    _.shuffle();
-    this.current_syllable = _[0];
+
+    filtered.shuffle();
+    this.current_syllable = filtered[0];
   }
+
 
   checkAnswer() {
     if (this.transcription_field == this.current_syllable.transcription) {
@@ -91,19 +93,20 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
       this.transcription_field = null;
       this.getTask();
 
-      // TODO сохранение результатов
-      this.practiceService.setSignToTranscriptionData(this.kana, this.progress);
+      this.practiceService.setData(this.practice_name, this.kana, this.progress);
     }
     else if (this.current_syllable.transcription.includes(this.transcription_field)) {
-      // TODO
+      // TODO изменение стиля поля
     }
     else {
       this.was_mistake = true;
-      // TODO
+      // TODO изменение стиля поля
     }
   }
 
+
   skip() {
+    // TODO укоротить
     if (typeof this.progress[this.current_syllable.id] == 'undefined') {
       this.progress[this.current_syllable.id] = -1;
     }
