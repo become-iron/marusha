@@ -1,11 +1,15 @@
-<div *ngIf="syllable">
-<div class="big-sign">{{syllable[kana]}}</div>
-<div>{{kana}}</div>
-<div>{{syllable.transcription}}</div>
+<div *ngIf="show_syllable_detail">
+  <div class="big-sign">{{syllable[kana]}}</div>
+  <div>{{kana}}</div>
+  <div>{{syllable.transcription}}</div>
 
-<div>
-  <div *ngFor="let word of getWords()">{{word[kana]}} - {{word.translation}}</div>
-</div>
+  <div>
+    <div *ngFor="let word of getWords()">{{word[kana]}} - {{word.translation}}</div>
+  </div>
 
-<button (click)="hideSyllableDetail()">Закрыть</button>
+  <div>
+    <div *ngFor="let phrase of getPhrases()">{{phrase[kana]}} - {{phrase.translation}}</div>
+  </div>
+
+  <button (click)="hideSyllableDetail()">Закрыть</button>
 </div>

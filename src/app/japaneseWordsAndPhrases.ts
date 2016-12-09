@@ -1,4 +1,4 @@
-export interface JapaneseWord {
+export interface JapaneseWordOrPhrase {
   // kanji?: string;
   hiragana?: string;
   katakana?: string;
@@ -10,8 +10,8 @@ export interface JapaneseWord {
 }
 
 // TODO
-export function getWordsBySign(kana: string, sign: string): JapaneseWord[] {
-  let words: JapaneseWord[] = [
+export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
+  let words: JapaneseWordOrPhrase[] = [
     // глаголы
     {translation: 'существовать, быть, находиться (неодушевленных предметах)', hiragana: 'ある'},
     {translation: 'cуществовать, быть (об одушевленных предметах)', hiragana: 'いる'},
@@ -62,9 +62,9 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWord[] {
   return words.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
 }
 
-export function getPhraseBySign() {
+export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
   // TODO
-  let phrases: JapaneseWord[] = [
+  let phrases: JapaneseWordOrPhrase[] = [
     {translation: 'Добрый день', hiragana: 'こんにちは'},
     {translation: 'Добрый вечер', hiragana: 'こんばんは'},
     {translation: 'Доброе утро', hiragana: 'おはようございます'},
@@ -96,4 +96,5 @@ export function getPhraseBySign() {
     {translation: 'Почему?', hiragana: 'どうして？'},
     {translation: 'Что?', hiragana: 'なに？',},
   ];
+  return phrases.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
 }

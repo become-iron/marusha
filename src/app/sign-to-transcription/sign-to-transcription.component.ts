@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import {TableOfKana, Syllable} from "../syllabary";
-import {PracticeService} from "../practice.service";
+import { Syllable } from "../syllabary";
+import { PracticeService } from "../practice.service";
+import { Practice } from "../practice";
 
 @Component({
   selector: 'app-sign-to-transcription',
@@ -10,28 +11,21 @@ import {PracticeService} from "../practice.service";
   styleUrls: ['./sign-to-transcription.component.css'],
   providers: [PracticeService]
 })
-export class SignToTranscriptionComponent extends TableOfKana implements OnInit {
+export class SignToTranscriptionComponent extends Practice implements OnInit {
   current_syllable: Syllable;
   is_right_previous_answer: boolean;
   previous_syllable: Syllable;
 
-  flag_diacritic: boolean;
-  flag_youon: boolean;
-
   transcription_field: string;
   transcription_field_style: any;
 
-  show_syllable_detail: boolean = false;
-  show_progress_table: boolean = false;
-
   was_mistake: boolean = false;
 
-
   constructor(
-    private route: ActivatedRoute,
-    private practiceService: PracticeService
+    protected route: ActivatedRoute,
+    protected practiceService: PracticeService
   ) {
-    super();
+    super(route, practiceService);
     this.practice_name = 'signToTranscription';
   }
 
@@ -53,12 +47,7 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
 
 
   getTask(): void {
-    let filtered = this.table
-      .filter(syllable =>
-        (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] == 'undefined')
-        && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
-      .slice(0, 5);
+    let filtered = this.filterOptions();
 
     if (filtered.length == 0) {
       console.log('всё выучено');
@@ -73,6 +62,15 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
     if (this.current_syllable == this.previous_syllable) {
       this.current_syllable = filtered[1];
     }
+  }
+
+  filterOptions(): Syllable[] {
+    return this.table
+      .filter(syllable =>
+        (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] == 'undefined')
+        && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
+        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+      .slice(0, 5);
   }
 
 
@@ -119,9 +117,5 @@ export class SignToTranscriptionComponent extends TableOfKana implements OnInit 
     // TODO костыль
     this.was_mistake = true;
     this.checkAnswer(this.current_syllable.transcription);
-  }
-
-  setSettings(key: string): void {
-    this.practiceService.setData(this.practice_name, key, this[key]);
   }
 }

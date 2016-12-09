@@ -15,7 +15,7 @@ import { ProgressTableComponent } from './progress-table/progress-table.componen
 import { SettingsComponent } from './settings/settings.component';
 import { SignToTranscriptionComponent } from './sign-to-transcription/sign-to-transcription.component';
 import { TranscriptionToSignComponent } from './transcription-to-sign/transcription-to-sign.component';
-import { SimiliarSignsComponent } from './similiar-signs/similiar-signs.component';
+import { SimilarSignsComponent } from './similiar-signs/similiar-signs.component';
 
 
 @NgModule({
@@ -30,7 +30,7 @@ import { SimiliarSignsComponent } from './similiar-signs/similiar-signs.componen
     SettingsComponent,
     SignToTranscriptionComponent,
     TranscriptionToSignComponent,
-    SimiliarSignsComponent,
+    SimilarSignsComponent,
   ],
   imports: [
     BrowserModule,

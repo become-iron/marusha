@@ -15,5 +15,8 @@
 </div>
 <div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
 
-<app-table-item-detail *ngIf="show_syllable_detail" [syllable]="right_option" [kana]="kana"></app-table-item-detail>
+<app-table-item-detail
+  [show_syllable_detail]="show_syllable_detail"
+  [syllable]="right_option"
+  [kana]="kana"></app-table-item-detail>
 <app-progress-table *ngIf="show_progress_table" [progress]="progress" [kana]="kana"></app-progress-table>

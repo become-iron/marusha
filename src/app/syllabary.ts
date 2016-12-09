@@ -159,11 +159,6 @@ export class TableOfKana {
   readonly rows: string[] = ['', 'к', 'с', 'т', 'н', 'х', 'м', 'р', 'в', 'г', 'дз', 'д', 'б', 'п'];
   readonly columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
 
-  practice_name?: string;
-  progress?: any;  // {id: progress}
-  progress_max?: number = 4;
-  progress_min?: number = -4;
-  is_all_studied?: boolean = false;
 
   getItem(row: string, column:string): Syllable {
     return this.table.find(obj => obj.row === row && obj.column === column);

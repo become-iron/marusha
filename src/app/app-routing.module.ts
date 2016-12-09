@@ -8,7 +8,7 @@ import { TranscriptionToSignComponent } from './transcription-to-sign/transcript
 import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
 import { SettingsComponent } from "./settings/settings.component";
 import { AboutComponent } from './about/about.component';
-import { SimiliarSignsComponent } from './similiar-signs/similiar-signs.component';
+import { SimilarSignsComponent } from './similiar-signs/similiar-signs.component';
 
 
 const appRoutes: Routes = [
@@ -28,8 +28,8 @@ const appRoutes: Routes = [
   { path: 'practice/corresponding-symbol/hiragana', component: CorrespondingSymbolComponent, data: {kana: 'hiragana'} },
   { path: 'practice/corresponding-symbol/katakana', component: CorrespondingSymbolComponent, data: {kana: 'katakana'} },
 
-  { path: 'practice/similar-signs/hiragana', component: SimiliarSignsComponent, data: {kana: 'hiragana'} },
-  { path: 'practice/similar-signs/katakana', component: SimiliarSignsComponent, data: {kana: 'katakana'} },
+  { path: 'practice/similar-signs/hiragana', component: SimilarSignsComponent, data: {kana: 'hiragana'} },
+  { path: 'practice/similar-signs/katakana', component: SimilarSignsComponent, data: {kana: 'katakana'} },
 
   // { path: 'practice/draw/:kana', component: null },
   { path: '**', redirectTo: '/about' },
