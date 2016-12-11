@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Practice } from "../practice";
 import { PracticeService } from "../practice.service";
@@ -14,6 +14,7 @@ export class TranscriptionToSignComponent extends Practice implements OnInit {
   constructor(
     protected route: ActivatedRoute,
     protected practiceService: PracticeService,
+    protected router: Router
   ) {
     super(route, practiceService);
     this.practice_name = 'transcriptionToSign';
@@ -49,5 +50,9 @@ export class TranscriptionToSignComponent extends Practice implements OnInit {
     return this.table
       .filter(syllable => !filtered.includes(syllable))
       .nRandomElements(4 - filtered.length)
+  }
+
+  toggleKana() {
+    this.router.navigate([`/practice/transcription-to-sign/${this.other_kana}`]);
   }
 }

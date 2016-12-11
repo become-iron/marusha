@@ -12,7 +12,7 @@ import { SimilarSignsComponent } from './similiar-signs/similiar-signs.component
 
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/about', pathMatch: 'full' },
+  { path: '', redirectTo: '/table/hiragana', pathMatch: 'full' },
   { path: 'about', component: AboutComponent, pathMatch: 'full' },
   { path: 'settings', component: SettingsComponent, pathMatch: 'full' },
 
@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   { path: 'practice/similar-signs/katakana', component: SimilarSignsComponent, data: {kana: 'katakana'} },
 
   // { path: 'practice/draw/:kana', component: null },
-  { path: '**', redirectTo: '/about' },
+  { path: '**', redirectTo: '/table/hiragana' },
 ];
 
 @NgModule({

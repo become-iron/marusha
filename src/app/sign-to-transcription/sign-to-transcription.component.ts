@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 
 import { Syllable } from "../syllabary";
 import { PracticeService } from "../practice.service";
@@ -23,7 +23,8 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
   constructor(
     protected route: ActivatedRoute,
-    protected practiceService: PracticeService
+    protected practiceService: PracticeService,
+    protected router: Router
   ) {
     super(route, practiceService);
     this.practice_name = 'signToTranscription';
@@ -75,6 +76,10 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
 
   checkAnswer(value: string): void {
+    if (value != '' && value != null) {
+      value = value.trim().toLowerCase();
+    }
+
     if (value === '' || value == null) {
       this.transcription_field_style = {};
       return;
@@ -93,7 +98,11 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
       this.is_right_previous_answer = !this.was_mistake;
 
       this.was_mistake = false;
+
+      this.previous_syllables.unshift(this.current_syllable);
+      this.previous_syllables = this.previous_syllables.slice(0, 10);
       this.previous_syllable = this.current_syllable;
+
       this.transcription_field = null;  // TODO
       this.getTask();
 
@@ -103,11 +112,11 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
     }
     else if (this.current_syllable.transcription.includes(value)) {
-      this.transcription_field_style = {'form-control-success': true};
+      this.transcription_field_style = {'right-answer': true};
     }
     else {
       this.was_mistake = true;
-      this.transcription_field_style = {'form-control-warning': true};
+      this.transcription_field_style = {'wrong-answer': true};
       // TODO изменение стиля поля
     }
   }
@@ -117,5 +126,9 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
     // TODO костыль
     this.was_mistake = true;
     this.checkAnswer(this.current_syllable.transcription);
+  }
+
+  toggleKana() {
+    this.router.navigate([`/practice/sign-to-transcription/${this.other_kana}`]);
   }
 }

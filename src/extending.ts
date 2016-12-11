@@ -4,25 +4,36 @@ interface Array<T> {
   nRandomElements(count: number);
   // nRandomElements2(count: number);
   includes(any): boolean;
+  last();
 }
 
-Array.prototype.randomElement = function () {
-  // http://stackoverflow.com/a/4550514
-  return this[Math.floor(Math.random() * this.length)]
-};
 
-Array.prototype.shuffle = function () {
-  for (let i = this.length; i; i--) {
-    let j = Math.floor(Math.random() * i);
-    [this[i - 1], this[j]] = [this[j], this[i - 1]];
-  }
-};
+// http://stackoverflow.com/a/4550514
+if (!Array.prototype.randomElement) {
+  Array.prototype.randomElement = function () {
+    return this[Math.floor(Math.random() * this.length)]
+  };
+}
 
-Array.prototype.nRandomElements = function (count: number) {
-  let _ = this.slice();
-  _.shuffle();
-  return _.slice(0, count);
-};
+
+if (!Array.prototype.shuffle) {
+  Array.prototype.shuffle = function () {
+    for (let i = this.length; i; i--) {
+      let j = Math.floor(Math.random() * i);
+      [this[i - 1], this[j]] = [this[j], this[i - 1]];
+    }
+  };
+}
+
+
+if (!Array.prototype.nRandomElements) {
+  Array.prototype.nRandomElements = function (count: number) {
+    let _ = this.slice();
+    _.shuffle();
+    return _.slice(0, count);
+  };
+}
+
 
 // Array.prototype.nRandomElements2 = function (count: number) {
 //   console.time('mur');
@@ -46,9 +57,9 @@ Array.prototype.nRandomElements = function (count: number) {
 // };
 
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
 if (!Array.prototype.includes) {
   Array.prototype.includes = function (searchElement) {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes
     if (this == null) {
       throw new TypeError('Array.prototype.includes called on null or undefined');
     }
@@ -78,5 +89,13 @@ if (!Array.prototype.includes) {
       k++;
     }
     return false;
+  };
+}
+
+
+// http://stackoverflow.com/a/9050354
+if (!Array.prototype.last){
+  Array.prototype.last = function(){
+    return this[this.length - 1];
   };
 }

@@ -1,7 +1,7 @@
-import {Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import {TableOfKana, Syllable} from '../syllabary'
+import { TableOfKana, Syllable } from '../syllabary'
 
 @Component({
   selector: 'app-table',
@@ -9,11 +9,10 @@ import {TableOfKana, Syllable} from '../syllabary'
   styleUrls: ['./table.component.css']
 })
 export class TableComponent extends TableOfKana implements OnInit{
-  kana: string;
-  syllable_to_detail: Syllable;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
   ) {
     super();
   }
@@ -22,9 +21,18 @@ export class TableComponent extends TableOfKana implements OnInit{
     this.route
       .data
       .subscribe(params => this.kana = params['kana']);
+    this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
+  }
+
+  toggleKana() {
+    this.router.navigate([`/table/${this.other_kana}`]);
   }
 
   showSyllableDetail(row: string, column: string) {
-    this.syllable_to_detail = this.getItem(row, column);
+    let _ = this.getItem(row, column);
+    if (_ != null) {
+      this.syllable_to_detail = _;
+      this.show_syllable_detail = true;
+    }
   }
 }

@@ -1,0 +1,35 @@
+#settings
+  .setting
+    input#is-diacritic(type="checkbox", [(ngModel)]="flag_diacritic", (change)="setSettings('flag_diacritic')")
+    label(for="is-diacritic")
+      | ДИАКРИТИКИ
+  .setting
+    input#is-youon(type="checkbox", [(ngModel)]="flag_youon", (change)="setSettings('flag_youon')")
+    label(for="is-youon")
+      | ЁОНЫ
+
+a#kana-toggle.ui-hover((click)="toggleKana()")
+  | ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}
+
+a#progress.ui-hover((click)="toggleProgressTable()")
+  | ПРОГРЕСС
+
+#syllables-list(*ngIf="previous_syllables")
+  .syllables-list-item(*ngFor="let syllable of previous_syllables", (click)="showSyllableDetail(syllable)")
+    span.kana {{syllable[kana]}}
+    span.transcription  /{{syllable.transcription}}/
+
+#task
+  #previous-syllable-info(*ngIf="previous_syllables[0]", [ngClass] = "{right: is_right_previous_choice, wrong: !is_right_previous_choice}", (click)="showSyllableDetail(previous_syllables[0])")
+    span.kana
+      | {{previous_syllables[0][kana]}}
+    |  - {{previous_syllables[0].transcription}}
+  #syllable.kana((click)="showSyllableDetail(right_option)")
+    | {{right_option.transcription}}
+  button.kana(*ngFor="let syllable of proposed_options", (click)="checkChoice(syllable)")
+    | {{syllable[kana]}}
+  #skip.ui-hover((click)="skip()")
+    | ПРОПУСТИТЬ
+
+app-table-item-detail(*ngIf="show_syllable_detail", [syllable]="syllable_to_detail", [kana]="kana", (click)="toggleSyllableDetail()")
+app-progress-table(*ngIf="show_progress_table", [progress]="progress", [kana]="kana", (click)="toggleProgressTable()")

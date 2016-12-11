@@ -1,0 +1,12 @@
+.modal-window
+  div.kana-table
+    table.table.table-hover.table-sm.table-bordered
+      tr
+        th
+        th(*ngFor="let column of columns")
+          | {{column}}
+      tr(*ngFor="let row of rows")
+        th
+          | {{row}}
+        td.kana(*ngFor="let column of columns", [ngClass]="getProgressStyle(row, column)")
+          | {{getSyllableSign(row, column)}}

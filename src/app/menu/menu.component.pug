@@ -1,0 +1,28 @@
+nav#menu-items([style.width]="show_menu ? '15rem' : '0'", (click)="toggleMenu()")
+
+  a(routerLink="/table/hiragana", routerLinkActive="active")
+    | ТАБЛИЦА
+
+  hr
+
+  a(routerLink="/practice/sign-to-transcription/hiragana", routerLinkActive="active")
+    | ЗНАК В ТРАНСКРИПЦИЮ
+
+  a(routerLink="/practice/transcription-to-sign/hiragana", routerLinkActive="active")
+    | ТРАНСКРИПЦИЮ В ЗНАК
+
+  a(routerLink="/practice/corresponding-symbol/hiragana", routerLinkActive="active")
+    | СООТВЕТСТВУЮЩИЙ СИМВОЛ
+
+  a(routerLink="/practice/similar-signs/hiragana", routerLinkActive="active")
+    | ПОХОЖИЕ СИМВОЛЫ
+
+  hr
+
+  a(routerLink="/about", routerLinkActive="active")
+    | О ПРИЛОЖЕНИИ
+  a(routerLink="/settings", routerLinkActive="active")
+    | НАСТРОЙКИ
+
+#menu-toggle.ui-hover([style.left]="show_menu ? '16rem' : '1rem'", (click)="toggleMenu()")
+  | &#9776;

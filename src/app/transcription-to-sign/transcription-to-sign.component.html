@@ -1,27 +1,22 @@
-<div class="big-sign" (click)="show_syllable_detail = !show_syllable_detail">
-  {{right_option.transcription}}
-</div>
-<div>
-  <button *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[kana]}}</button>
-</div>
-<div>
-  <button (click)="skip()">Пропустить</button>
-</div>
-<div class="previous_syllable"
-     *ngIf="previous_right_option"
-     [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}"
->
-  {{previous_right_option[kana]}} - {{previous_right_option[other_kana]}} - {{previous_right_option.transcription}}
-</div>
-<div><button (click)="show_progress_table = !show_progress_table;">Прогресс</button></div>
 
-<input type="checkbox" id="flag_diacritic" [(ngModel)]="flag_diacritic" (change)="setSettings('flag_diacritic')">
-<label for="flag_diacritic">Диакритики</label>
-<input type="checkbox" id="flag_youon" [(ngModel)]="flag_youon" (change)="setSettings('flag_youon')">
-<label for="flag_youon">Ёоны</label>
-
-<app-table-item-detail
-  [show_syllable_detail]="show_syllable_detail"
-  [syllable]="right_option"
-  [kana]="kana"></app-table-item-detail>
-<app-progress-table *ngIf="show_progress_table" [progress]="progress" [kana]="kana"></app-progress-table>
+<div id="settings">
+  <div class="setting">
+    <input id="is-diacritic" type="checkbox" [(ngModel)]="flag_diacritic" (change)="setSettings('flag_diacritic')"/>
+    <label for="is-diacritic">ДИАКРИТИКИ</label>
+  </div>
+  <div class="setting">
+    <input id="is-youon" type="checkbox" [(ngModel)]="flag_youon" (change)="setSettings('flag_youon')"/>
+    <label for="is-youon">ЁОНЫ</label>
+  </div>
+</div><a class="ui-hover" id="kana-toggle" (click)="toggleKana()">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a><a class="ui-hover" id="progress" (click)="toggleProgressTable()">ПРОГРЕСС</a>
+<div id="syllables-list" *ngIf="previous_syllables">
+  <div class="syllables-list-item" *ngFor="let syllable of previous_syllables" (click)="showSyllableDetail(syllable)"><span class="kana">{{syllable[kana]}}</span><span class="transcription"> /{{syllable.transcription}}/</span></div>
+</div>
+<div id="task">
+  <div id="previous-syllable-info" *ngIf="previous_syllables[0]" [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}" (click)="showSyllableDetail(previous_syllables[0])"><span class="kana">{{previous_syllables[0][kana]}}</span> - {{previous_syllables[0].transcription}}</div>
+  <div class="kana" id="syllable" (click)="showSyllableDetail(right_option)">{{right_option.transcription}}</div>
+  <button class="kana" *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[kana]}}</button>
+  <div class="ui-hover" id="skip" (click)="skip()">ПРОПУСТИТЬ</div>
+</div>
+<app-table-item-detail *ngIf="show_syllable_detail" [syllable]="syllable_to_detail" [kana]="kana" (click)="toggleSyllableDetail()"></app-table-item-detail>
+<app-progress-table *ngIf="show_progress_table" [progress]="progress" [kana]="kana" (click)="toggleProgressTable()"></app-progress-table>

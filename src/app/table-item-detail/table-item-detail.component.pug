@@ -1,0 +1,19 @@
+.modal-window((click)="hideSyllableDetail()")
+  .syllable-detail
+    .big-sign.kana
+      | {{syllable[kana]}}
+    div
+      | {{kana == 'hiragana' ? 'хирагана' : 'катакана'}}
+    p.transcription
+      | {{syllable.transcription}}
+    .words-block
+      p.word(*ngFor="let word of getWords()")
+        span.kana
+          | {{word[kana]}}
+        |  - {{word.translation}}
+
+    .words-block
+      p.word(*ngFor="let phrase of getPhrases()")
+        span.kana
+          | {{phrase[kana]}}
+        |  - {{phrase.translation}}

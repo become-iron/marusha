@@ -11,7 +11,7 @@
   background-color: #bee5c1;
 }
 .progress0 {
-  background-color: white;
+  /*background-color: white;*/
 }
 .progress1m {
   background-color: #e2aeac;
@@ -26,15 +26,15 @@
   background-color: #d8615d;
 }
 
-table {
-  width: auto;
-}
+/*table {*/
+  /*width: auto;*/
+/*}*/
 
-table, th, td {
-  border: 1px solid black;
-  text-align: center;
-}
+/*table, th, td {*/
+  /*border: 1px solid black;*/
+  /*text-align: center;*/
+/*}*/
 
-td, th {
-  padding: .5rem;
-}
+/*td, th {*/
+  /*padding: .5rem;*/
+/*}*/

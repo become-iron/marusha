@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Practice } from "../practice";
 import { PracticeService } from "../practice.service";
@@ -18,7 +18,8 @@ export class SimilarSignsComponent extends Practice implements OnInit {
 
   constructor(
     protected route: ActivatedRoute,
-    protected practiceService: PracticeService
+    protected practiceService: PracticeService,
+    protected router: Router
   ) {
     super(route, practiceService);
     this.practice_name = 'similarSigns';
@@ -53,5 +54,9 @@ export class SimilarSignsComponent extends Practice implements OnInit {
             this.similar_signs_ids[this.kana].includes(syllable.id)
             && !filtered.includes(syllable))
           .nRandomElements(4 - filtered.length);
+  }
+
+  toggleKana() {
+    this.router.navigate([`/practice/similar-signs/${this.other_kana}`]);
   }
 }

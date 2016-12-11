@@ -9,12 +9,10 @@ export abstract class Practice extends TableOfKana {
 
   is_right_previous_choice?: boolean;
   previous_right_option?: Syllable;
+  previous_syllables: Syllable[] = [];
 
   flag_diacritic?: boolean;
   flag_youon?: boolean;
-
-  show_syllable_detail: boolean = false;
-  show_progress_table: boolean = false;
 
   progress: any;  // {id: progress}
   progress_max: number = 4;
@@ -80,7 +78,10 @@ export abstract class Practice extends TableOfKana {
         this.progress[id]--;
       }
     }
+    this.previous_syllables.unshift(this.right_option);
+    this.previous_syllables = this.previous_syllables.slice(0, 10);
     this.previous_right_option = this.right_option;
+
     this.updateOptions();
 
     this.practiceService.setData(this.practice_name, this.kana, this.progress);
@@ -92,5 +93,12 @@ export abstract class Practice extends TableOfKana {
 
   setSettings(key: string): void {
     this.practiceService.setData(this.practice_name, key, this[key]);
+  }
+
+  showSyllableDetail(syllable: Syllable) {
+    if (syllable != null) {
+      this.syllable_to_detail = syllable;
+      this.show_syllable_detail = true;
+    }
   }
 }

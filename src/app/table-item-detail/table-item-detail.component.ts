@@ -17,11 +17,11 @@ export class TableItemDetailComponent extends TableOfKana {
 
   getWords(): JapaneseWordOrPhrase[] {
     // TODO ограничения на количество слов
-    return getWordsBySign(this.kana, this.syllable[this.kana]);
+    return getWordsBySign(this.kana, this.syllable[this.kana]).slice(0, 5);
   }
 
   getPhrases() {
-    return getPhrasesBySign(this.kana, this.syllable[this.kana]);
+    return getPhrasesBySign(this.kana, this.syllable[this.kana]).slice(0, 5);
   }
 
   hideSyllableDetail() {

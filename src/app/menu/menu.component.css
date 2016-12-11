@@ -1,3 +1,44 @@
+/*MENU*/
+
+#menu-items {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #696d70; /* Black*/
+  overflow: hidden; /* Disable horizontal scroll */
+  padding-top: 2rem; /* Place content 60px from the top */
+  transition: 0.5s;
+
+  text-align: center;
+  font-size: 1.2rem;
+  /*float: left;*/
+}
+
+/* The navigation menu links */
+#menu-items a {
+  position: relative;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: white;
+  display: block;
+  /*transition: 0.3s*/
+}
+
+#menu-items a:hover {
+  color: #373a3c;
+}
+
+#menu-items hr {
+  border-color: #818181;
+  width: 90%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .active {
   background-color: #66afe9;
 }
+

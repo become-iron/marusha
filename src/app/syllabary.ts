@@ -19,6 +19,10 @@ export class TableOfKana {
   kana: string;
   other_kana?: string;
 
+  show_syllable_detail?: boolean = false;
+  show_progress_table?: boolean = false;
+  syllable_to_detail?: Syllable;
+
   readonly table: Syllable[] = [
     {id: 0,  hiragana: 'あ', katakana: 'ア', transcription: 'а',  row: '',  column: 'а'},
     {id: 1,  hiragana: 'い', katakana: 'イ', transcription: 'и',  row: '',  column: 'и'},
@@ -164,7 +168,7 @@ export class TableOfKana {
     return this.table.find(obj => obj.row === row && obj.column === column);
   }
 
-  getItemSign(row: string, column:string): string {
+  getSyllableSign(row: string, column:string): string {
     // возвращает знак слога согласному выбранной азбуке
     let item = this.getItem(row, column);
     return (typeof item != 'undefined') ? item[this.kana] : '';
@@ -172,5 +176,13 @@ export class TableOfKana {
 
   getSyllableBySign(sign: string): Syllable {
     return this.table.find(obj => obj.hiragana == sign || obj.katakana == sign);
+  }
+
+  toggleSyllableDetail(): void {
+    this.show_syllable_detail = !this.show_syllable_detail;
+  }
+
+  toggleProgressTable(): void {
+    this.show_progress_table = !this.show_progress_table;
   }
 }

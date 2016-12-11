@@ -1,0 +1,16 @@
+a#kana-toggle.ui-hover((click)="toggleKana()")
+  | ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}
+
+div.kana-table
+  table.table.table-hover.table-sm.table-bordered
+    tr
+      th
+      th(*ngFor="let column of columns")
+        | {{column}}
+    tr(*ngFor="let row of rows")
+      th
+        | {{row}}
+      td.kana(*ngFor="let column of columns", (click)="showSyllableDetail(row, column)")
+        | {{getSyllableSign(row, column)}}
+
+app-table-item-detail(*ngIf="show_syllable_detail", [syllable]="syllable_to_detail", [kana]="kana", (click)="toggleSyllableDetail()")

@@ -1,19 +1,6 @@
-<nav>
-  <div><a routerLink="/table/hiragana" routerLinkActive="active">Hiragana Table</a></div>
-  <div><a routerLink="/table/katakana" routerLinkActive="active">Katakana Table</a></div>
 
-  <div><a routerLink="/practice/sign-to-transcription/hiragana" routerLinkActive="active">Sign to Transcription [hiragana]</a></div>
-  <div><a routerLink="/practice/sign-to-transcription/katakana" routerLinkActive="active">Sign to Transcription [katakana]</a></div>
-
-  <div><a routerLink="/practice/transcription-to-sign/hiragana" routerLinkActive="active">Transcription to Sign [hiragana]</a></div>
-  <div><a routerLink="/practice/transcription-to-sign/katakana" routerLinkActive="active">Transcription to Sign [katakana]</a></div>
-
-  <div><a routerLink="/practice/corresponding-symbol/hiragana" routerLinkActive="active">Corresponding Symbol [hiragana]</a></div>
-  <div><a routerLink="/practice/corresponding-symbol/katakana" routerLinkActive="active">Corresponding Symbol [katakana]</a></div>
-
-  <div><a routerLink="/practice/similar-signs/hiragana" routerLinkActive="active">Similar Signs [hiragana]</a></div>
-  <div><a routerLink="/practice/similar-signs/katakana" routerLinkActive="active">Similar Signs [katakana]</a></div>
-
-  <div><a routerLink="/about" routerLinkActive="active">About</a></div>
-  <div><a routerLink="/settings" routerLinkActive="active">Settings</a></div>
+<nav id="menu-items" [style.width]="show_menu ? '15rem' : '0'" (click)="toggleMenu()"><a routerLink="/table/hiragana" routerLinkActive="active">ТАБЛИЦА</a>
+  <hr/><a routerLink="/practice/sign-to-transcription/hiragana" routerLinkActive="active">ЗНАК В ТРАНСКРИПЦИЮ</a><a routerLink="/practice/transcription-to-sign/hiragana" routerLinkActive="active">ТРАНСКРИПЦИЮ В ЗНАК</a><a routerLink="/practice/corresponding-symbol/hiragana" routerLinkActive="active">СООТВЕТСТВУЮЩИЙ СИМВОЛ</a><a routerLink="/practice/similar-signs/hiragana" routerLinkActive="active">ПОХОЖИЕ СИМВОЛЫ</a>
+  <hr/><a routerLink="/about" routerLinkActive="active">О ПРИЛОЖЕНИИ</a><a routerLink="/settings" routerLinkActive="active">НАСТРОЙКИ</a>
 </nav>
+<div class="ui-hover" id="menu-toggle" [style.left]="show_menu ? '16rem' : '1rem'" (click)="toggleMenu()">&#9776;</div>
