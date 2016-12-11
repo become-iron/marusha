@@ -1,0 +1,216 @@
+body {
+  font-size: 1rem;
+}
+
+.kana {
+  font-family: MS PGothic, Arial, sans-serif;
+}
+
+#menu-toggle {
+  /*content: "&#9776;";*/
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  transition: 0.5s;
+  font-size: 1.5rem;
+  z-index: 9999;
+
+  line-height: 2rem;
+}
+
+#settings {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.setting {
+  position: relative;
+}
+
+#progress {
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+#syllables-list {
+  position: absolute;
+  top: 25%;
+  right: 1rem;
+  height: 50%;
+  /*max-height: 50%;*/
+  overflow-y: hidden;
+  text-align: right;
+  font-size: 2rem;
+
+  /*width: 7rem;*/
+  /*background-color: #2aabd2;*/
+}
+
+.syllables-list-item {
+  cursor: pointer;
+}
+
+.syllables-list-item .kana {
+}
+
+.syllables-list-item .transcription {
+  font-style: italic;
+  font-size: 1.25rem;
+}
+
+#kana-toggle {
+  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.ui-hover {
+  padding: 0 0.3rem;
+}
+
+.ui-hover:hover {
+  background-color: #b5bec4;
+  padding: 0 0.3rem;
+  border-radius: 0.3rem;
+  transition: 0.5s;
+}
+
+
+/*MODAL*/
+.modal-bg {
+  display: none;
+  position: fixed;
+  z-index: 9997;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(36, 34, 36, 0.95);
+  background: radial-gradient(ellipse at center, rgba(105, 109, 112, 0.93) 0%, rgba(36, 34, 36, 0.93) 100%);
+}
+
+.modal-window {
+  display: none;
+  position: absolute;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 0;
+  color: #fff;
+
+  /*font-weight: 400;*/
+}
+
+.modal-window .syllable-detail {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 60px;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.modal-window .syllable-detail .big-sign {
+  font-size: 7rem;
+  line-height: 7rem;
+}
+
+.modal-window .syllable-detail .transcription {
+  font-size: 5rem;
+  line-height: 5rem;
+}
+
+.modal-window .syllable-detail .word {
+  text-align: left;
+}
+
+.modal-window .syllable-detail span.kana {
+  font-weight: bold;
+}
+
+
+
+/*PRACTICE*/
+#task {
+  text-transform: uppercase;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  width: 15rem;
+}
+
+#previous-syllable-info {
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+#syllable {
+  cursor: pointer;
+  font-size: 9rem;
+  line-height: 11rem;
+}
+
+#skip {
+  cursor: pointer;
+}
+
+/*SIGN TO TRANSCRIPTION*/
+#answer-field {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 3.5rem;
+  border: 0;
+  width: 15rem;
+}
+
+/*OTHER PRACTICES*/
+#task button {
+  font-size: 2rem;
+  line-height: 3rem;
+  text-align: center;
+  width: 6rem;
+  height: 3rem;
+  border: 0;
+  padding: 0.1rem 0.5rem;
+  margin: 0.3rem 0.15rem;
+}
+
+/*TABLE*/
+#kana-table {
+  position: absolute;
+  width: 80%;
+  /*left: 50%;*/
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+}
+
+#kana-table .table th, td {
+  border: 2px solid #d2d7d9 !important;
+}
+
+#kana-table .table th, td{
+  text-align: center;
+  padding: 0.1rem !important;
+}
+
+td.right {
+  background-color: #5dd364;
+}
+
+td.wrong {
+  background-color: #d9534f;
+}

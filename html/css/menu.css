@@ -1,0 +1,85 @@
+
+
+
+
+/*MENU*/
+/*#open-menu::before {*/
+  /*content: "MENU";*/
+/*}*/
+
+/*#open-menu {*/
+  /*position: absolute;*/
+  /*top: 5%;*/
+  /*!*left: 100%;*!*/
+  /*margin-left: 19px;*/
+  /*width: 44px;*/
+  /*height: 44px;*/
+  /*border-radius: 50%;*/
+  /*cursor: pointer;*/
+  /*border: 0;*/
+  /*background: none;*/
+  /*display: inline;*/
+  /*padding: 0;*/
+/*}*/
+
+
+#menu-items {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #696d70; /* Black*/
+  overflow: hidden; /* Disable horizontal scroll */
+  padding-top: 2rem; /* Place content 60px from the top */
+  transition: 0.5s;
+
+  text-align: center;
+  font-size: 1.2rem;
+  /*float: left;*/
+}
+
+/* The navigation menu links */
+#menu-items a {
+  position: relative;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: white;
+  display: block;
+  /*transition: 0.3s*/
+}
+
+/* When you mouse over the navigation links, change their color */
+#menu-items a:hover {
+  color: #373a3c;
+}
+
+/* Position and style the close button (top right corner) */
+/*#close-menu {*/
+  /*position: relative;*/
+  /*top: 0;*/
+  /*right: 25px;*/
+  /*font-size: 36px;*/
+  /*margin-left: 50px;*/
+/*}*/
+
+#menu-items hr {
+  border-color: #818181;
+  width: 90%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/*PRACTICE*/
+/*#task {*/
+  /*font-family: Gotham, Helvetica, Arial, sans-serif;*/
+  /*font-weight: 300;*/
+  /*position: absolute;*/
+  /*top: 50%;*/
+  /*left: 50%;*/
+  /*text-align: center;*/
+  /*!*width: 50%;*!*/
+  /*!*height: 50%;*!*/
+/*}*/

@@ -1,0 +1,66 @@
+extends ../app.pug
+
+block content
+  #settings
+    .setting
+      input#is-diacritc(type="checkbox" )
+      label(for="is-diacritc")
+        | ДИАКРИТИКИ
+    .setting
+      input#is-youon(type="checkbox")
+      label(for="is-youon")
+        | ЁОНЫ
+
+  #syllables-list
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana あ
+      span.transcription  /а/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana い
+      span.transcription  /и/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana う
+      span.transcription  /у/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana え
+      span.transcription  /э/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana お
+      span.transcription  /о/
+    //.previous-syllables-item
+    //  span.kana じゃ
+    //  span.transcription  /дзя/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana い
+      span.transcription  /и/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana う
+      span.transcription  /у/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana え
+      span.transcription  /э/
+    .syllables-list-item(onclick="toggleModal()")
+      span.kana お
+      span.transcription  /о/
+
+  a#progress(onclick="toggleTable()").ui-hover
+    | ПРОГРЕСС
+
+  a#kana-toggle.ui-hover
+    | КАТАКАНА
+
+
+
+  #task
+    #previous-syllable-info(onclick="toggleModal()")
+      span.kana
+        | あ
+      |  - а
+    #syllable(onclick="toggleModal()")
+      | ДЗЁ
+    button.kana お
+    button.kana じゃ
+    button.kana え
+    button.kana お
+    #skip.ui-hover
+      | ПРОПУСТИТЬ

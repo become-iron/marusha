@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>マルシャ</title>
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--link(rel="icon" type="image/x-icon" href="favicon.ico")-->
+    <link href="file:///D:/Programming/Web/marusha/html/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="file:///D:/Programming/Web/marusha/html/css/style2.css" rel="stylesheet" type="text/css">
+    <link href="file:///D:/Programming/Web/marusha/html/css/menu.css" rel="stylesheet" type="text/css">
+    <script src="file:///D:/Programming/Web/marusha/html/js/script.js" type="text/javascript"></script>
+    <script src="file:///D:/Programming/Web/marusha/html/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <app-root>
+      <!--| Loading...-->
+    </app-root>
+    <nav id="menu-items"><a href="file:///D:/Programming/Web/marusha/html/apps/table.html" routerLinkActive="active">ТАБЛИЦА</a>
+      <hr><a href="file:///D:/Programming/Web/marusha/html/apps/sign-to-transcription.html" routerLinkActive="active">ЗНАК В ТРАНСКРИПЦИЮ</a><a href="file:///D:/Programming/Web/marusha/html/apps/transcription-to-sign.html" routerLinkActive="active">ТРАНСКРИПЦИЮ В ЗНАК</a><a href="#" routerLinkActive="active">СООТВЕТСТВУЮЩИЙ СИМВОЛ</a><a href="#" routerLinkActive="active">ПОХОЖИЕ СИМВОЛЫ</a>
+      <hr><a href="#" routerLinkActive="active">О ПРИЛОЖЕНИИ</a><a href="#" routerLinkActive="active">НАСТРОЙКИ</a>
+    </nav>
+    <div class="ui-hover" id="menu-toggle" onclick="openNav()">&#9776;</div>
+    <div id="main">
+      <div class="modal-bg" id="syllable-detail-bg" onclick="toggleModal()"></div>
+      <div class="modal-content" id="syllable-detail" onclick="toggleModal()">
+        <div class="syllable-detail">
+          <div class="big-sign kana">あ</div>
+          <p class="transcription">а</p>
+          <p class="word"><span class="kana">ある</span> - существовать, быть, находиться (неодушевленных предметах)</p>
+          <p class="word"><span class="kana">あう</span> - встречаться, видеться</p>
+          <p class="word"><span class="kana">あそぶ</span> - играть, развлекаться</p>
+          <p class="word"><span class="kana">あなた</span> - ты</p>
+        </div>
+      </div>
+      <div class="modal-bg" id="progress-table-bg" onclick="toggleTable()"></div>
+      <div class="modal-content" id="progress-table" onclick="toggleModal()">
+        <div class="container" id="kana-table">
+          <table class="table table-hover table-sm table-bordered">
+            <tr>
+              <th></th>
+              <th></th>
+              <th>а</th>
+              <th>и</th>
+              <th>у</th>
+              <th>э</th>
+              <th>о</th>
+              <th>я</th>
+              <th>ю</th>
+              <th>ё</th>
+            </tr>
+            <tr>
+              <th></th>
+              <td></td>
+              <td>あ</td>
+              <td class="right">い</td>
+              <td class="right">う</td>
+              <td class="wrong">え</td>
+              <td class="right">お</td>
+              <td>や</td>
+              <td>ゆ</td>
+              <td>よ</td>
+            </tr>
+            <tr>
+              <th>к</th>
+              <td></td>
+              <td>か</td>
+              <td>き</td>
+              <td class="wrong">く</td>
+              <td>け</td>
+              <td>こ</td>
+              <td class="wrong">きゃ</td>
+              <td>きゅ</td>
+              <td>きょ</td>
+            </tr>
+            <tr>
+              <th>с</th>
+              <td></td>
+              <td>さ</td>
+              <td>し</td>
+              <td>す</td>
+              <td>せ</td>
+              <td>そ</td>
+              <td>しゃ</td>
+              <td>しゅ</td>
+              <td>しょ</td>
+            </tr>
+            <tr>
+              <th>т</th>
+              <td></td>
+              <td>た</td>
+              <td>ち</td>
+              <td>つ</td>
+              <td>て</td>
+              <td>と</td>
+              <td>ちゃ</td>
+              <td>ちゅ</td>
+              <td>ちょ</td>
+            </tr>
+            <tr>
+              <th>н</th>
+              <td>ん</td>
+              <td>な</td>
+              <td>に</td>
+              <td>ぬ</td>
+              <td>ね</td>
+              <td>の</td>
+              <td>にゃ</td>
+              <td>にゅ</td>
+              <td>にょ</td>
+            </tr>
+            <tr>
+              <th>х</th>
+              <td></td>
+              <td>は</td>
+              <td>ひ</td>
+              <td>ふ</td>
+              <td>へ</td>
+              <td>ほ</td>
+              <td>ひゃ</td>
+              <td>ひゅ</td>
+              <td>ひょ</td>
+            </tr>
+            <tr>
+              <th>м</th>
+              <td></td>
+              <td>ま</td>
+              <td>み</td>
+              <td>む</td>
+              <td>め</td>
+              <td>も</td>
+              <td>みゃ</td>
+              <td>みゅ</td>
+              <td>みょ</td>
+            </tr>
+            <tr>
+              <th>р</th>
+              <td></td>
+              <td>ら</td>
+              <td>り</td>
+              <td>る</td>
+              <td>れ</td>
+              <td>ろ</td>
+              <td>りゃ</td>
+              <td>りゅ</td>
+              <td>りょ</td>
+            </tr>
+            <tr>
+              <th>в</th>
+              <td></td>
+              <td>わ</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>を</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>г</th>
+              <td></td>
+              <td>が</td>
+              <td>ぎ</td>
+              <td>ぐ</td>
+              <td>げ</td>
+              <td>ご</td>
+              <td>ぎゃ</td>
+              <td>ぎゅ</td>
+              <td>ぎょ</td>
+            </tr>
+            <tr>
+              <th>дз</th>
+              <td></td>
+              <td>ざ</td>
+              <td>じ</td>
+              <td>ず</td>
+              <td>ぜ</td>
+              <td>ぞ</td>
+              <td>じゃ</td>
+              <td>じゅ</td>
+              <td>じょ</td>
+            </tr>
+            <tr>
+              <th>д</th>
+              <td></td>
+              <td>だ</td>
+              <td>ぢ</td>
+              <td>づ</td>
+              <td>で</td>
+              <td>ど</td>
+              <td>ぢゃ</td>
+              <td>ぢゅ</td>
+              <td>ぢょ</td>
+            </tr>
+            <tr>
+              <th>б</th>
+              <td></td>
+              <td>ば</td>
+              <td>び</td>
+              <td>ぶ</td>
+              <td>べ</td>
+              <td>ぼ</td>
+              <td>びゃ</td>
+              <td>びゅ</td>
+              <td>びょ</td>
+            </tr>
+            <tr>
+              <th>п</th>
+              <td></td>
+              <td>ぱ</td>
+              <td>ぴ</td>
+              <td>ぷ</td>
+              <td>ぺ</td>
+              <td>ぽ</td>
+              <td>ぴゃ</td>
+              <td>ぴゅ</td>
+              <td>ぴょ</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="settings">
+        <div class="setting">
+          <input id="is-diacritc" type="checkbox">
+          <label for="is-diacritc">ДИАКРИТИКИ</label>
+        </div>
+        <div class="setting">
+          <input id="is-youon" type="checkbox">
+          <label for="is-youon">ЁОНЫ</label>
+        </div>
+      </div>
+      <div id="syllables-list">
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">あ</span><span class="transcription"> /а/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">い</span><span class="transcription"> /и/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">う</span><span class="transcription"> /у/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">え</span><span class="transcription"> /э/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">お</span><span class="transcription"> /о/</span></div>
+        <!--.previous-syllables-item-->
+        <!--  span.kana じゃ-->
+        <!--  span.transcription  /дзя/-->
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">い</span><span class="transcription"> /и/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">う</span><span class="transcription"> /у/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">え</span><span class="transcription"> /э/</span></div>
+        <div class="syllables-list-item" onclick="toggleModal()"><span class="kana">お</span><span class="transcription"> /о/</span></div>
+      </div><a class="ui-hover" id="progress" onclick="toggleTable()">ПРОГРЕСС</a><a class="ui-hover" id="kana-toggle">КАТАКАНА</a>
+      <div id="task">
+        <div id="previous-syllable-info" onclick="toggleModal()"><span class="kana">あ</span> - а</div>
+        <div class="kana" id="syllable" onclick="toggleModal()">あ</div>
+        <input id="answer-field" type="text" autofocus maxlength="3" placeholder="">
+        <div class="ui-hover" id="skip">ПРОПУСТИТЬ</div>
+      </div>
+    </div>
+  </body>
+</html>

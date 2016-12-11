@@ -1,0 +1,15 @@
+extends index.pug
+
+block app
+  include apps/app-menu
+  div#main
+    #syllable-detail-bg.modal-bg(onclick="toggleModal()")
+    #syllable-detail.modal-content(onclick="toggleModal()")
+      include apps/syllable-detail.pug
+
+    #progress-table-bg.modal-bg(onclick="toggleTable()")
+    #progress-table.modal-content(onclick="toggleModal()")
+      include apps/progress-table.pug
+
+    block content
+
