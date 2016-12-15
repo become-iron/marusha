@@ -1,40 +1,35 @@
 .progress4 {
   background-color: #5dd364;
 }
+
 .progress3 {
   background-color: #84d889;
 }
+
 .progress2 {
   background-color: #a1dda5;
 }
+
 .progress1 {
   background-color: #bee5c1;
 }
+
 .progress0 {
   /*background-color: white;*/
 }
+
 .progress1m {
   background-color: #e2aeac;
 }
+
 .progress2m {
   background-color: #d88c8a;
 }
+
 .progress3m {
   background-color: #d37774;
 }
+
 .progress4m {
   background-color: #d8615d;
 }
-
-/*table {*/
-  /*width: auto;*/
-/*}*/
-
-/*table, th, td {*/
-  /*border: 1px solid black;*/
-  /*text-align: center;*/
-/*}*/
-
-/*td, th {*/
-  /*padding: .5rem;*/
-/*}*/

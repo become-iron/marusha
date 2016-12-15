@@ -30,13 +30,13 @@
 }
 
 #menu-items a.active {
-  background-color: #66afe9;
+  background-color: #4682B4;
 }
 
 #menu-items hr {
   border-color: #818181;
   width: 90%;
-  margin-top: 0;
-  margin-bottom: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
