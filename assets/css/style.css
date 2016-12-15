@@ -2,12 +2,15 @@ html {
   color: #373a3c;
 }
 
+input, button {
+  outline: none !important;  /*убрать рамки вокруг полей, кнопок при фокусе на них*/
+}
+
 .kana {
-  font-family: MS Gothic, MS PGothic, Meiryo, Arial, sans-serif;
+  font-family: MS PGothic, MS Gothic, Meiryo, Arial, sans-serif;
 }
 
 #menu-toggle {
-  cursor: pointer;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -28,17 +31,31 @@ html {
 }
 
 #progress {
-  cursor: pointer;
   position: absolute;
   bottom: 1rem;
   right: 1rem;
 }
 
 #kana-toggle {
-  cursor: pointer;
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+.ui-hover {
+  cursor: pointer;
+  z-index: 9998;
+  /*padding: 0 0.3rem;*/
+  color: #373a3c;
+}
+
+.ui-hover:hover {
+  /*padding: 0 0.3rem;*/
+  /*border-radius: 0.3rem;*/
+  /*background-color: #b5bec4;*/
+  /*transition: 0.5s;*/
+  text-decoration: none;
+  color: #4682B4 !important;
 }
 
 #syllables-list {
@@ -61,21 +78,6 @@ html {
 .syllables-list-item .transcription {
   font-style: italic;
   font-size: 1.25rem;
-}
-
-.ui-hover {
-  z-index: 9998;
-  padding: 0 0.3rem;
-  color: #373a3c;
-}
-
-.ui-hover:hover {
-  padding: 0 0.3rem;
-  border-radius: 0.3rem;
-  background-color: #b5bec4;
-  transition: 0.5s;
-  text-decoration: none;
-  color: #373a3c;
 }
 
 
@@ -158,8 +160,10 @@ html {
 }
 
 #skip {
-  cursor: pointer;
+  /*display: inline-block;*/
 }
+
+
 
 /*SIGN TO TRANSCRIPTION*/
 #answer-field {
@@ -174,6 +178,7 @@ html {
 
 /*OTHER PRACTICES*/
 #task button {
+  cursor: pointer;
   font-size: 2rem;
   line-height: 3rem;
   text-align: center;
@@ -184,6 +189,13 @@ html {
   margin: 0.3rem 0.15rem;
 }
 
+#task button:hover {
+  color: white;
+  background-color: #696d70;
+}
+
+
+
 /*TABLE*/
 .kana-table {
   position: absolute;
@@ -192,7 +204,7 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.8rem;
 }
 
@@ -201,15 +213,3 @@ html {
   text-align: center;
   padding: 0 0.1rem !important;
 }
-
-.kana-table th {
-  font-weight: bold;
-}
-
-/*td.right {*/
-  /*background-color: #5dd364;*/
-/*}*/
-
-/*td.wrong {*/
-  /*background-color: #d9534f;*/
-/*}*/
