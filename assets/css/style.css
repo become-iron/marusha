@@ -1,5 +1,5 @@
-body {
-  font-size: 1rem;
+html {
+  color: #373a3c;
 }
 
 .kana {
@@ -7,14 +7,12 @@ body {
 }
 
 #menu-toggle {
-  /*content: "&#9776;";*/
   cursor: pointer;
   position: absolute;
   top: 1rem;
   left: 1rem;
   transition: 0.5s;
   font-size: 1.5rem;
-  z-index: 9997;
 
   line-height: 2rem;
 }
@@ -48,10 +46,8 @@ body {
   top: 25%;
   right: 1rem;
   height: 50%;
-  /*max-height: 50%;*/
   overflow-y: hidden;
   text-align: right;
-  font-size: 2rem;
 }
 
 .syllables-list-item {
@@ -59,6 +55,7 @@ body {
 }
 
 .syllables-list-item .kana {
+  font-size: 2rem;
 }
 
 .syllables-list-item .transcription {
@@ -67,7 +64,9 @@ body {
 }
 
 .ui-hover {
+  z-index: 9998;
   padding: 0 0.3rem;
+  color: #373a3c;
 }
 
 .ui-hover:hover {
@@ -75,12 +74,13 @@ body {
   border-radius: 0.3rem;
   background-color: #b5bec4;
   transition: 0.5s;
+  text-decoration: none;
+  color: #373a3c;
 }
 
 
 /*MODAL*/
 .modal-window {
-  /*display: none;*/
   position: absolute;
   z-index: 9999;
   top: 0;
@@ -90,8 +90,6 @@ body {
   background: rgba(36, 34, 36, 0.95);
   background: radial-gradient(ellipse at center, rgba(105, 109, 112, 0.93) 0%, rgba(36, 34, 36, 0.93) 100%);
   color: #fff;
-
-  /*font-weight: 400;*/
 }
 
 .modal-window .syllable-detail {
@@ -100,7 +98,6 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  /*padding: 60px;*/
   max-width: 80%;
   margin: 0 auto;
   text-align: center;
@@ -146,11 +143,11 @@ body {
   font-size: 2rem;
 }
 
-.right {
+#previous-syllable-info.right {
   color: green;
 }
 
-.wrong {
+#previous-syllable-info.wrong {
   color: red;
 }
 
@@ -190,19 +187,17 @@ body {
 /*TABLE*/
 .kana-table {
   position: absolute;
-  width: 80%;
-  /*left: 50%;*/
+  min-width: 70%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1.5rem;
+
+  font-size: 1.3rem;
+  line-height: 1.8rem;
 }
 
 .kana-table th, td {
   border: 2px solid #d2d7d9 !important;
-}
-
-.kana-table th, td{
   text-align: center;
   padding: 0 0.1rem !important;
 }
@@ -211,10 +206,10 @@ body {
   font-weight: bold;
 }
 
-td.right {
-  background-color: #5dd364;
-}
+/*td.right {*/
+  /*background-color: #5dd364;*/
+/*}*/
 
-td.wrong {
-  background-color: #d9534f;
-}
+/*td.wrong {*/
+  /*background-color: #d9534f;*/
+/*}*/
