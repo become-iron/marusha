@@ -127,8 +127,4 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
     this.was_mistake = true;
     this.checkAnswer(this.current_syllable.transcription);
   }
-
-  toggleKana() {
-    this.router.navigate([`/practice/sign-to-transcription/${this.other_kana}`]);
-  }
 }

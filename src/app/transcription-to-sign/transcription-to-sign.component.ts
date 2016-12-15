@@ -51,8 +51,4 @@ export class TranscriptionToSignComponent extends Practice implements OnInit {
       .filter(syllable => !filtered.includes(syllable))
       .nRandomElements(4 - filtered.length)
   }
-
-  toggleKana() {
-    this.router.navigate([`/practice/transcription-to-sign/${this.other_kana}`]);
-  }
 }

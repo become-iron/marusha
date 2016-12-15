@@ -55,8 +55,4 @@ export class SimilarSignsComponent extends Practice implements OnInit {
             && !filtered.includes(syllable))
           .nRandomElements(4 - filtered.length);
   }
-
-  toggleKana() {
-    this.router.navigate([`/practice/similar-signs/${this.other_kana}`]);
-  }
 }

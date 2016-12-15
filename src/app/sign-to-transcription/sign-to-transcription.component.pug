@@ -13,7 +13,7 @@
     span.kana {{syllable[kana]}}
     span.transcription  /{{syllable.transcription}}/
 
-a#kana-toggle.ui-hover((click)="toggleKana()")
+a#kana-toggle.ui-hover([routerLink]="['../', other_kana]", routerLinkActive="active")
   | ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}
 
 a#progress.ui-hover((click)="toggleProgressTable()")

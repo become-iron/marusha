@@ -24,10 +24,6 @@ export class TableComponent extends TableOfKana implements OnInit{
     this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
   }
 
-  toggleKana() {
-    this.router.navigate([`/table/${this.other_kana}`]);
-  }
-
   showSyllableDetail(row: string, column: string) {
     let _ = this.getItem(row, column);
     if (_ != null) {

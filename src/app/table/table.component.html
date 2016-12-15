@@ -1,4 +1,4 @@
-<a class="ui-hover" id="kana-toggle" (click)="toggleKana()">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a>
+<a class="ui-hover" id="kana-toggle" [routerLink]="['../', other_kana]" routerLinkActive="active">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a>
 <div class="kana-table">
   <table class="table table-hover table-sm table-bordered">
     <tr>

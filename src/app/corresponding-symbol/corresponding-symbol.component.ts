@@ -49,8 +49,4 @@ export class CorrespondingSymbolComponent extends Practice implements OnInit {
       .filter(syllable => !filtered.includes(syllable))
       .nRandomElements(4 - filtered.length);
   }
-
-  toggleKana() {
-    this.router.navigate([`/practice/corresponding-symbol/${this.other_kana}`]);
-  }
 }

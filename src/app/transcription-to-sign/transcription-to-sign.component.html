@@ -8,7 +8,7 @@
     <input id="is-youon" type="checkbox" [(ngModel)]="flag_youon" (change)="setSettings('flag_youon')"/>
     <label for="is-youon">ЁОНЫ</label>
   </div>
-</div><a class="ui-hover" id="kana-toggle" (click)="toggleKana()">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a><a class="ui-hover" id="progress" (click)="toggleProgressTable()">ПРОГРЕСС</a>
+</div><a class="ui-hover" id="kana-toggle" [routerLink]="['../', other_kana]" routerLinkActive="active">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a><a class="ui-hover" id="progress" (click)="toggleProgressTable()">ПРОГРЕСС</a>
 <div id="syllables-list" *ngIf="previous_syllables">
   <div class="syllables-list-item" *ngFor="let syllable of previous_syllables" (click)="showSyllableDetail(syllable)"><span class="kana">{{syllable[kana]}}</span><span class="transcription"> /{{syllable.transcription}}/</span></div>
 </div>

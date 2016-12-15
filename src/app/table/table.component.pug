@@ -1,4 +1,4 @@
-a#kana-toggle.ui-hover((click)="toggleKana()")
+a#kana-toggle.ui-hover([routerLink]="['../', other_kana]", routerLinkActive="active")
   | ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}
 
 div.kana-table

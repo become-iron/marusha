@@ -11,7 +11,7 @@
 </div>
 <div id="syllables-list" *ngIf="previous_syllables">
   <div class="syllables-list-item" *ngFor="let syllable of previous_syllables" (click)="showSyllableDetail(syllable)"><span class="kana">{{syllable[kana]}}</span><span class="transcription"> /{{syllable.transcription}}/</span></div>
-</div><a class="ui-hover" id="kana-toggle" (click)="toggleKana()">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a><a class="ui-hover" id="progress" (click)="toggleProgressTable()">ПРОГРЕСС</a>
+</div><a class="ui-hover" id="kana-toggle" [routerLink]="['../', other_kana]" routerLinkActive="active">ПЕРЕКЛЮЧИТЬ НА {{kana == 'hiragana' ? 'КАТАКАНУ' : 'ХИРАГАНУ'}}</a><a class="ui-hover" id="progress" (click)="toggleProgressTable()">ПРОГРЕСС</a>
 <div id="task">
   <div id="previous-syllable-info" *ngIf="previous_syllables[0]" [ngClass]="{right: is_right_previous_answer, wrong: !is_right_previous_answer}" (click)="showSyllableDetail(previous_syllables[0])"><span class="kana">{{previous_syllables[0][kana]}}</span> - {{previous_syllables[0].transcription}}</div>
   <div class="kana" id="syllable" (click)="showSyllableDetail(current_syllable)">{{current_syllable[kana]}}</div>
