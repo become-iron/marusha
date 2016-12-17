@@ -21,6 +21,7 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
         {translation: 'вставать, просыпаться, происходить, случаться', hiragana: 'おきる'},
         {translation: 'преподавать, учить, объяснять', hiragana: 'おしえる'},
         {translation: 'покупать, приобретать', hiragana: 'かう'},
+        {translation: 'продавать', hiragana: 'うる'},
         {translation: 'уходить (домой), возвращаться (домой)', hiragana: 'かえる'},
         {translation: 'слышать, слушать, узнавать, спрашивать', hiragana: 'きく'},
         {translation: 'надевать, носить (одежду)', hiragana: 'きる'},
@@ -35,7 +36,10 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
         {translation: 'думать', hiragana: 'おもう'},
         {translation: 'говорить', hiragana: 'いう'},
         {translation: 'писать', hiragana: 'かく'},
-
+        {translation: 'спать', hiragana: 'ねる'},
+        {translation: 'открывать', hiragana: 'あける'},
+        {translation: 'закрывать', hiragana: 'しめる'},
+        {translation: 'искать, исследовать, расследовать, изучать', hiragana: 'しらべる'},
 
         // существительные
         // {translation: '', hiragana: '', kanji: ''},
@@ -47,13 +51,40 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
         {translation: 'дочь', hiragana: 'むすめ'},
         {translation: 'сын', hiragana: 'むすこ'},
 
-        {translation: 'кошка', hiragana: 'ねこ'},
-        {translation: 'собака', hiragana: 'いぬ'},
         {translation: 'яблоко', hiragana: 'りんご'},
         {translation: 'вода', hiragana: 'みず'},
         {translation: 'окно', hiragana: 'まど'},
         {translation: 'кровать', hiragana: 'べっど'},
         {translation: 'татами', hiragana: 'たたみ'},
+        {translation: 'молоко', hiragana: 'ぎゅうにゅう'},
+        {translation: 'чай', hiragana: 'おちゃ'},
+        {translation: 'колено', hiragana: 'ひざ'},
+        {translation: 'губы', hiragana: 'くちびる'},
+        {translation: 'кулак', hiragana: 'こぶし'},
+        {translation: 'палец', hiragana: 'ゆび'},
+        {translation: 'кожа', hiragana: 'はだ'},
+
+        {translation: 'кошка', hiragana: 'ねこ'},
+        {translation: 'собака', hiragana: 'いぬ'},
+        {translation: 'птица', hiragana: 'とり'},
+        {translation: 'обезьяна', hiragana: 'サル'},
+        {translation: 'овца', hiragana: 'ヒツジ'},
+        {translation: 'жираф', hiragana: 'キリン'},
+        {translation: 'рыба', hiragana: 'さかな'},
+
+        {translation: 'школа', hiragana: 'がっこう'},
+        {translation: 'университет', hiragana: 'だいがく'},
+        {translation: 'детский сад', hiragana: 'ようちえん'},
+        {translation: 'учитель', hiragana: 'せんせい'},
+        {translation: 'ученик (студент)', hiragana: 'がくせい'},
+        {translation: 'форма (школьная)', hiragana: 'せいふく'},
+
+        {translation: 'школа', hiragana: 'がっこう'},
+        {translation: 'университет', hiragana: 'だいがく'},
+        {translation: 'детский сад', hiragana: 'ようちえん'},
+        {translation: 'учитель', hiragana: 'せんせい'},
+        {translation: 'ученик (студент)', hiragana: 'がくせい'},
+        {translation: 'форма (школьная)', hiragana: 'せいふく'},
 
         // местоимения
         {translation: 'я', hiragana: 'わたし'},
@@ -75,6 +106,12 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
         {translation: 'синий', hiragana: 'あおい'},
         {translation: 'белый', hiragana: 'しろい'},
         {translation: 'черный', hiragana: 'くろい'},
+        {translation: 'холодная (погода)', hiragana: 'すずしい'},
+        {translation: 'тихий, бесшумный', hiragana: 'しずか'},
+        {translation: 'горячий (напиток), жаркая (погода)', hiragana: 'あつい'},
+        {translation: 'холодный (напиток)', hiragana: 'つめたい'},
+        {translation: 'трудный, сложный', hiragana: 'むずかしい'},
+        {translation: 'опасный', hiragana: 'あぶない'},
 
         // катакана
         {translation: 'туалет', katakana: 'トイレ'},
@@ -94,6 +131,18 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
         {translation: 'книга', katakana: 'ブック'},
         {translation: 'волосы', katakana: 'ヘア'},
         {translation: 'ручка', katakana: 'ペン'},
+        {translation: 'сок', katakana: 'ジュース'},
+        {translation: 'алкоголь', katakana: 'アルコール'},
+        {translation: 'чашка', katakana: 'カップ'},
+        {translation: 'стакан', katakana: 'グラス'},
+        {translation: 'молоко', katakana: 'ミルク'},
+        {translation: 'таракан', katakana: 'ゴキブリ'},
+        {translation: 'пингвин', katakana: 'ペンギン'},
+        {translation: 'тест (экзамен)', katakana: 'テスト'},
+        {translation: 'блокнот', katakana: 'ノート'},
+        {translation: 'футбол', katakana: 'フットボール'},
+        {translation: 'баскетбол', katakana: 'バスケットボール'},
+        {translation: 'мороженое', katakana: 'アイスクリーム'},
 
         {translation: 'Россия', katakana: 'ロシア'},
         {translation: 'Америка', katakana: 'アメリカ'},
@@ -142,7 +191,9 @@ export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhra
         {translation: 'Позвони мне', hiragana: 'でんわしてね'},
         {translation: 'Я не могу в это поверить!', hiragana: 'しんじられない！'},
         {translation: 'Я хотел бы этот', hiragana: 'これがほしいのですが'},
+        {translation: 'Я наелся', hiragana: 'おなか いっぱい'},
 
+        {translation: 'Что это?', hiragana: 'これ わ なん です か？'},
         {translation: 'Что вы сказали?', hiragana: 'なんていいましたか？'},
         {translation: 'Что случилось?', hiragana: 'どうした？'},
         {translation: 'Почему?', hiragana: 'どうして？'},
@@ -153,6 +204,8 @@ export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhra
         {translation: 'Могу ли я присесть здесь?', hiragana: 'ここにすわってもいいですか？'},
         {translation: 'В самом деле?', hiragana: 'ほんと？'},
         {translation: 'Вам помочь?', hiragana: 'ごようでしょうか？'},
+        {translation: 'Что-нибудь ещё?', hiragana: 'なにか ほかに あります か？'},
+        {translation: 'Можешь скопировать этот файл для меня?', hiragana: 'そのファイルをコピーしてくれますか？'},
     ];
     return phrases.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
 }
