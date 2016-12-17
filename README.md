@@ -4,8 +4,8 @@
 
 ### Ссылки на приложение
 
-* [Вконтакте](https://vk.com/app5772184)
-* [На GitHub Pages](https://become-iron.github.io/marusha)
+* [во Вконтакте](https://vk.com/app5772184)
+* [на GitHub Pages](https://become-iron.github.io/marusha)
 
 ### Название приложения
 マルシャ — Marusha, Маруся :cat:

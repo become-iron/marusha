@@ -13,39 +13,40 @@ export class PracticeService {
     transcriptionToSign: {
       hiragana: {},
       katakana: {},
-      settings: {}
+      settings: {},
+      flag_diacritic: null,
+      flag_youon: null
     },
 
     correspondingSymbol:  {
       hiragana: {},
       katakana: {},
-      settings: {}
+      settings: {},
+      flag_diacritic: null,
+      flag_youon: null
     },
 
     similarSigns: {
       hiragana: {},
       katakana: {},
-      settings: {}
+      settings: {},
     },
 
-    settings: {}
+    // settings: {}
   };
 
-  // TODO доделать работу с localstorage
   // TODO sessionstorage?
   constructor() {
     if (typeof localStorage['app_data'] != 'undefined') {
-      this['app_data'] = JSON.parse(localStorage['app_data']);
+      this.app_data = JSON.parse(localStorage['app_data']);
     }
   }
 
   getData(practice: string, key?: string): any {
-    // console.log(this.app_data[practice][key]);
     return typeof key == 'undefined' ? this.app_data[practice] : this.app_data[practice][key];
   }
 
   setData(practice: string, key: string, data: any): void {
-
     this.app_data[practice][key] = data;
     localStorage['app_data'] = JSON.stringify(this.app_data);
   }

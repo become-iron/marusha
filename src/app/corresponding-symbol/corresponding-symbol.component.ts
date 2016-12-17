@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { PracticeService } from '../practice.service';
 import { Practice } from "../practice";
@@ -14,7 +14,6 @@ export class CorrespondingSymbolComponent extends Practice implements OnInit {
   constructor(
     protected route: ActivatedRoute,
     protected practiceService: PracticeService,
-    protected router: Router
   ) {
     super(route, practiceService);
     this.practice_name = 'correspondingSymbol';

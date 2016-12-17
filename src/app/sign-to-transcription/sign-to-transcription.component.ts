@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute } from '@angular/router';
 
 import { Syllable } from "../syllabary";
 import { PracticeService } from "../practice.service";
@@ -24,7 +24,6 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
   constructor(
     protected route: ActivatedRoute,
     protected practiceService: PracticeService,
-    protected router: Router
   ) {
     super(route, practiceService);
     this.practice_name = 'signToTranscription';
