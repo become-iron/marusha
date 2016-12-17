@@ -1,0 +1,12 @@
+/*http://font.gloomy.jp/honoka-antique-maru-dl.html*/
+@font-face {
+  /*Печатный закругленный*/
+  font-family: Honoka_Antique-Maru;
+  src: url("../../fonts/Honoka_Antique-Maru.otf");
+  /*font-weight: 400;*/
+  /*font-style: normal;*/
+}
+
+.kana {
+  font-family: Honoka_Antique-Maru, sans-serif;
+}
