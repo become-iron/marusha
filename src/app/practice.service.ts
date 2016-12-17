@@ -32,7 +32,9 @@ export class PracticeService {
       settings: {},
     },
 
-    // settings: {}
+    settings: {
+      font: null
+    }
   };
 
   // TODO sessionstorage?

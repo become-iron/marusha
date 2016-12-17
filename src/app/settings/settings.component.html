@@ -1,8 +1,10 @@
 
 <div class="container">
-  <!--label(for="kana_font_family") Выбрать шрифт:-->
-  <!--select(name="kana_font_family", id="kana_font_family", [(ngModel)]="kana_font_family")-->
-  <!--  option(value="bla_bla", selected)-->
-  <!--  option(value="bla_bla2")-->
+  <label for="kana_font_family">Выбрать шрифт:</label>
+  <select name="kana_font_family" id="kana_font_family" [(ngModel)]="chosen_font" (change)="changeFont(chosen_font)">
+    <option *ngFor="let font of fonts">{{font.text}}</option>
+  </select>
+  <div>Текст для примера:</div>
+  <div class="kana" style="font-size: 2rem">そのファイルをコピーしてくれますか？</div>
   <button class="btn btn-default" (click)="clearHistory()">Очистить всю историю</button>
 </div>

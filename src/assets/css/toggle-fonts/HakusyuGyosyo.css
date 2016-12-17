@@ -1,0 +1,13 @@
+/*http://www.hakusyu.com/download_education.htm*/
+@font-face {
+  /*Рукописный гёсё*/
+  /*Gyosho (гёсё), или полукурсив, характеризуется более быстрым стилем написания, плавными, закругленными линиями, напоминающему по начертанию хирагану.*/
+  font-family: HakusyuGyosyo;
+  src: url("../../fonts/HakusyuGyosyo_kk.otf");
+  /*font-weight: 400;*/
+  /*font-style: normal;*/
+}
+
+.kana {
+  font-family: HakusyuGyosyo, sans-serif;
+}
