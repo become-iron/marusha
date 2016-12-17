@@ -57,7 +57,7 @@ export class SettingsComponent implements OnInit {
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `../../assets/css/toggle-fonts/${font}.css`;
+      link.href = `./assets/css/toggle-fonts/${font}.css`;
       link.media = 'all';
       head.appendChild(link);
 
