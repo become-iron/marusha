@@ -23,7 +23,7 @@ export class AppComponent implements OnInit{
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `../../assets/css/toggle-fonts/${font}.css`;
+      link.href = `./marusha/assets/css/toggle-fonts/${font}.css`;  // TODO
       link.media = 'all';
       head.appendChild(link);
     }
