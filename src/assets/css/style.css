@@ -1,4 +1,5 @@
 html {
+  font-size: 2.3vh;
   color: #373a3c;
 }
 
@@ -8,6 +9,23 @@ input, button {
 
 .kana {
   font-family: MS PGothic, MS Gothic, Meiryo, Arial, sans-serif;
+}
+
+.ui-hover {
+  cursor: pointer;
+  z-index: 9998;
+  /*padding: 0 0.3rem;*/
+  color: #373a3c;
+  user-select: none;
+}
+
+.ui-hover:hover {
+  /*padding: 0 0.3rem;*/
+  /*border-radius: 0.3rem;*/
+  /*background-color: #b5bec4;*/
+  /*transition: 0.5s;*/
+  text-decoration: none;
+  color: #4682B4 !important;
 }
 
 #menu-toggle {
@@ -40,22 +58,6 @@ input, button {
   position: absolute;
   top: 1rem;
   right: 1rem;
-}
-
-.ui-hover {
-  cursor: pointer;
-  z-index: 9998;
-  /*padding: 0 0.3rem;*/
-  color: #373a3c;
-}
-
-.ui-hover:hover {
-  /*padding: 0 0.3rem;*/
-  /*border-radius: 0.3rem;*/
-  /*background-color: #b5bec4;*/
-  /*transition: 0.5s;*/
-  text-decoration: none;
-  color: #4682B4 !important;
 }
 
 #syllables-list {
@@ -176,6 +178,16 @@ input, button {
   border-radius: 0.4rem;
 }
 
+#answer-field.right-answer {
+  border-color: #5cb85c;
+  background-color: #5cb85c;
+}
+
+#answer-field.wrong-answer {
+  border-color: #d9534f;
+  background-color: #d9534f;
+}
+
 /*OTHER PRACTICES*/
 #task button {
   cursor: pointer;
@@ -204,12 +216,16 @@ input, button {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 1.5rem;
-  line-height: 1.8rem;
+  font-size: 2rem;
+  line-height: 2.3rem;
 }
 
 .kana-table th, td {
   border: 2px solid #d2d7d9 !important;
   text-align: center;
   padding: 0 0.1rem !important;
+}
+
+.kana-table th {
+  text-transform: uppercase;
 }

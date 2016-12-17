@@ -23,6 +23,7 @@
   text-decoration: none;
   color: white;
   display: block;
+  outline: none;
 }
 
 #menu-items a:hover {

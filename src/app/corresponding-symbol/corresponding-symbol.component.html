@@ -14,7 +14,7 @@
 </div>
 <div id="task">
   <div id="previous-syllable-info" *ngIf="previous_syllables[0]" [ngClass]="{right: is_right_previous_choice, wrong: !is_right_previous_choice}" (click)="showSyllableDetail(previous_syllables[0])"><span class="kana">{{previous_syllables[0][kana]}}</span> - {{previous_syllables[0][other_kana]}}</div>
-  <div id="syllable" (click)="showSyllableDetail(right_option)">{{right_option[kana]}}</div>
+  <div class="kana" id="syllable" (click)="showSyllableDetail(right_option)">{{right_option[kana]}}</div>
   <button class="kana" *ngFor="let syllable of proposed_options" (click)="checkChoice(syllable)">{{syllable[other_kana]}}</button>
   <div class="ui-hover" id="skip" (click)="skip()">ПРОПУСТИТЬ</div>
 </div>
