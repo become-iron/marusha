@@ -146,7 +146,7 @@ export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase
     {translation: 'Великобритания', katakana: 'イギリス'},
   ];
 
-  return words.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
+  return words.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign)).nRandomElements(3);
 }
 
 
@@ -206,5 +206,5 @@ export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhra
     // {translation: 'Можешь скопировать этот файл для меня?', hiragana: 'そのファイルをコピーしてくれますか？'},
   ];
 
-  return phrases.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign));
+  return phrases.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign)).nRandomElements(3);
 }
