@@ -123,6 +123,8 @@ input, button {
 
 .modal-window .syllable-detail .word {
   text-align: left;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
 }
 
 .modal-window .syllable-detail span.kana {
@@ -216,8 +218,8 @@ input, button {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 2rem;
-  line-height: 2.3rem;
+  font-size: 1.8rem;
+  line-height: 2rem;
 }
 
 .kana-table th, td {
