@@ -14,16 +14,18 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit() {
-    let font = this.practiceService.app_data.settings.font;
+    // смена шрифта
+    let fontName = this.practiceService.getData('settings', 'font');
 
-    if (font != null) {
+    if (fontName != null && fontName != '') {
       let cssId = 'kana-font';
+
       let head = document.getElementsByTagName('head')[0];
       let link = document.createElement('link');
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `./assets/css/toggle-fonts/${font}.css`;  // TODO
+      link.href = `./assets/css/toggle-fonts/${fontName}.css`;  // TODO
       link.media = 'all';
       head.appendChild(link);
     }

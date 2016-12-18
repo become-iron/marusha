@@ -5,8 +5,8 @@
       | {{font.text}}
   div
     | Текст для примера:
-  div.kana(style="font-size: 2rem;")
-    | そのファイルをコピーしてくれますか
+  div.kana
+    | {{example_phrase}}
 
 
   button.btn.btn-default((click)="clearHistory()") Очистить всю историю
