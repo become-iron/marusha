@@ -9,7 +9,7 @@ import { PracticeService } from "../practice.service";
 })
 export class SettingsComponent implements OnInit {
   fonts = [
-    {text: 'печатный', value: ''},  // дефолтный
+    {text: 'печатный', value: ''},  // по умолчанию
     {text: 'курсивный', value: 'Honoka_Antique-Maru'},
     {text: 'рукописный (гёсё, gyosho)', value: 'HakusyuGyosyo'},
   ];
@@ -31,12 +31,9 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  clearHistory() {
-    localStorage.clear();
-    console.log('История очищена');
-  }
-
   changeFont(fontFamily: string) {
+
+    // document.getElementById('pagestyle').setAttribute('href', sheet);
     // TODO обдумать критические ситуации
     if (fontFamily == null) {return;}
 
@@ -57,7 +54,7 @@ export class SettingsComponent implements OnInit {
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `//become-iron.github.io/marusha/assets/css/toggle-fonts/${font}.css`;  // TODO
+      link.href = `./assets/css/toggle-fonts/${font}.css`;  // TODO
       link.media = 'all';
       head.appendChild(link);
 
@@ -65,5 +62,8 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-
+  clearHistory() {
+    localStorage.clear();
+    console.log('История очищена');
+  }
 }
