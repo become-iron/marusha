@@ -57,7 +57,7 @@ export class SettingsComponent implements OnInit {
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `./marusha/assets/css/toggle-fonts/${font}.css`;  // TODO
+      link.href = `//become-iron.github.io/marusha/assets/css/toggle-fonts/${font}.css`;  // TODO
       link.media = 'all';
       head.appendChild(link);
 
