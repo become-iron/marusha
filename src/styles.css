@@ -147,11 +147,11 @@ input, button {
 }
 
 #previous-syllable-info.right {
-  color: #41cd42;
+  color: #1be91d;
 }
 
 #previous-syllable-info.wrong {
-  color: #ce4445;
+  color: #e91b1d;
 }
 
 #syllable {
@@ -176,13 +176,13 @@ input, button {
 }
 
 #answer-field.right-answer {
-  border-color: #41cd42;
-  background-color: #41cd42;
+  border-color: #1be91d;
+  background-color: #1be91d;
 }
 
 #answer-field.wrong-answer {
-  border-color: #ce4445;
-  background-color: #ce4445;
+  border-color: #e91b1d;
+  background-color: #e91b1d;
 }
 
 /*OTHER PRACTICES*/
