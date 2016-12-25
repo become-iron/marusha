@@ -1,35 +1,35 @@
 .progress4 {
-  background-color: #5dd364;
+    background-color: #41cd42;
 }
 
 .progress3 {
-  background-color: #84d889;
+    background-color: #6add6f;
 }
 
 .progress2 {
-  background-color: #a1dda5;
+    background-color: #97efa0;
 }
 
 .progress1 {
-  background-color: #bee5c1;
+    background-color: #c7fdd2;
 }
 
 .progress0 {
-  /*background-color: white;*/
+    background-color: transparent;
 }
 
 .progress1m {
-  background-color: #e2aeac;
+    background-color: #fecbd6;
 }
 
 .progress2m {
-  background-color: #d88c8a;
+    background-color: #f19ea7;
 }
 
 .progress3m {
-  background-color: #d37774;
+    background-color: #e07075;
 }
 
 .progress4m {
-  background-color: #d8615d;
+    background-color: #ce4445;
 }
