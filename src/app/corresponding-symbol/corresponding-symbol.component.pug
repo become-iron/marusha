@@ -22,8 +22,7 @@ a#progress.ui-hover((click)="toggleProgressTable()")
 #task
   #previous-syllable-info(*ngIf="previous_syllables[0]", [ngClass] = "{right: is_right_previous_choice, wrong: !is_right_previous_choice}", (click)="showSyllableDetail(previous_syllables[0])")
     span.kana
-      | {{previous_syllables[0][kana]}}
-    |  - {{previous_syllables[0][other_kana]}}
+      | {{previous_syllables[0][kana]}} - {{previous_syllables[0][other_kana]}}
   #syllable.kana((click)="showSyllableDetail(right_option)")
     | {{right_option[kana]}}
   button.kana(*ngFor="let syllable of proposed_options", (click)="checkChoice(syllable)")

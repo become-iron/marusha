@@ -50,9 +50,11 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
     let filtered = this.filterOptions();
 
     if (filtered.length == 0) {
-      console.log('всё выучено');
-      // TODO
-      this.is_all_studied = true;
+      this.current_syllable = this.table
+        .filter(syllable =>
+          (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
+          && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+        .randomElement();
       return;
     }
 

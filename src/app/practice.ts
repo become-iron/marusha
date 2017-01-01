@@ -17,7 +17,6 @@ export abstract class Practice extends TableOfKana {
   progress: any;  // {id: progress}
   progress_max: number = 4;
   progress_min: number = -4;
-  is_all_studied: boolean = false;
 
   // функции для отбора слогов
   filterOptions?(): Syllable[];
@@ -36,9 +35,12 @@ export abstract class Practice extends TableOfKana {
     let filtered = this.filterOptions();
 
     if (filtered.length == 0) {
-      console.log('всё выучено');
-      // TODO
-      this.is_all_studied = true;
+      this.proposed_options = this.table
+        .filter(syllable =>
+          (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
+          && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+        .nRandomElements(4);
+      this.right_option = this.proposed_options.randomElement();
       return;
     }
     else if (filtered.length <= 3) {
