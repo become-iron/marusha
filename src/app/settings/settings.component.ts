@@ -74,6 +74,6 @@ export class SettingsComponent implements OnInit {
 
   clearHistory() {
     localStorage.clear();
-    console.log('История очищена');
+    console.info('Marusha. История очищена');
   }
 }

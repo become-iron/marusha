@@ -14,6 +14,10 @@ export class AppComponent implements OnInit{
   ) {}
 
   ngOnInit() {
+    this.setupFont();
+  }
+
+  setupFont() {
     // смена шрифта
     let fontName = this.practiceService.getData('settings', 'font');
 
@@ -25,7 +29,7 @@ export class AppComponent implements OnInit{
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = `./assets/css/toggle-fonts/${fontName}.css`;  // TODO
+      link.href = `./assets/css/toggle-fonts/${fontName}.css`;
       link.media = 'all';
       head.appendChild(link);
     }
