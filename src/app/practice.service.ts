@@ -39,13 +39,13 @@ export class PracticeService {
 
   // TODO sessionstorage?
   constructor() {
-    if (typeof localStorage['app_data'] != 'undefined') {
+    if (typeof localStorage['app_data'] !== 'undefined') {
       this.app_data = JSON.parse(localStorage['app_data']);
     }
   }
 
   getData(practice: string, key?: string): any {
-    return typeof key == 'undefined' ? this.app_data[practice] : this.app_data[practice][key];
+    return typeof key === 'undefined' ? this.app_data[practice] : this.app_data[practice][key];
   }
 
   setData(practice: string, key: string, data: any): void {

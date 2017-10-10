@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PracticeService } from "../practice.service";
+import { PracticeService } from '../practice.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { PracticeService } from "../practice.service";
   styleUrls: ['app.component.css'],
   providers: [PracticeService]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   constructor(
     protected practiceService: PracticeService
   ) {}
@@ -19,13 +19,13 @@ export class AppComponent implements OnInit{
 
   setupFont() {
     // смена шрифта
-    let fontName = this.practiceService.getData('settings', 'font');
+    const fontName = this.practiceService.getData('settings', 'font');
 
-    if (fontName != null && fontName != '') {
-      let cssId = 'kana-font';
+    if (fontName != null && fontName !== '') {
+      const cssId = 'kana-font';
 
-      let head = document.getElementsByTagName('head')[0];
-      let link = document.createElement('link');
+      const head = document.getElementsByTagName('head')[0];
+      const link = document.createElement('link');
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';

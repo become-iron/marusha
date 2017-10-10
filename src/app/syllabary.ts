@@ -1,17 +1,19 @@
 // TODO добавить английскую транскрипцию
 // TODO две транскрипции для одного символа (напр., ке и кэ)
-// TODO Дополнительные знаки каны для передачи отсутствующих в годзюоне звуков (https://ru.wikipedia.org/wiki/Катакана#.D0.9F.D0.BE.D0.BB.D0.BD.D0.B0.D1.8F_.D1.82.D0.B0.D0.B1.D0.BB.D0.B8.D1.86.D0.B0)
+
+// TODO Дополнительные знаки каны для передачи отсутствующих в годзюоне звуков
+// (https://ru.wikipedia.org/wiki/Катакана#.D0.9F.D0.BE.D0.BB.D0.BD.D0.B0.D1.8F_.D1.82.D0.B0.D0.B1.D0.BB.D0.B8.D1.86.D0.B0)
 
 // элемент азбуки
 export interface Syllable {
-  readonly id: number,
-  readonly hiragana?: string,  // символ хираганы
-  readonly katakana: string,  // символ катаканы
-  readonly transcription: string,
-  readonly row: string,
-  readonly column: string,
-  readonly isDiacritic?: boolean, // с диакритиком (https://ru.wikipedia.org/wiki/Дакутэн и https://ru.wikipedia.org/wiki/Хандакутэн)
-  readonly isYouon?: boolean,  // ёон (https://ru.wikipedia.org/wiki/Ёон)
+  readonly id: number;
+  readonly hiragana?: string;  // символ хираганы
+  readonly katakana: string;  // символ катаканы
+  readonly transcription: string;
+  readonly row: string;
+  readonly column: string;
+  readonly isDiacritic?: boolean; // с диакритиком (https://ru.wikipedia.org/wiki/Дакутэн и https://ru.wikipedia.org/wiki/Хандакутэн)
+  readonly isYouon?: boolean;  // ёон (https://ru.wikipedia.org/wiki/Ёон)
 }
 
 
@@ -19,8 +21,8 @@ export class TableOfKana {
   kana: string;
   other_kana?: string;
 
-  show_syllable_detail?: boolean = false;
-  show_progress_table?: boolean = false;
+  show_syllable_detail? = false;
+  show_progress_table? = false;
   syllable_to_detail?: Syllable;
 
   readonly table: Syllable[] = [
@@ -164,18 +166,18 @@ export class TableOfKana {
   readonly columns: string[] = ['', 'а', 'и', 'у', 'э', 'о', 'я', 'ю', 'ё'];
 
 
-  getItem(row: string, column:string): Syllable {
+  getItem(row: string, column: string): Syllable {
     return this.table.find(obj => obj.row === row && obj.column === column);
   }
 
-  getSyllableSign(row: string, column:string): string {
+  getSyllableSign(row: string, column: string): string {
     // возвращает знак слога согласному выбранной азбуке
-    let item = this.getItem(row, column);
-    return (typeof item != 'undefined') ? item[this.kana] : '';
+    const item = this.getItem(row, column);
+    return (typeof item !== 'undefined') ? item[this.kana] : '';
   }
 
   getSyllableBySign(sign: string): Syllable {
-    return this.table.find(obj => obj.hiragana == sign || obj.katakana == sign);
+    return this.table.find(obj => obj.hiragana === sign || obj.katakana === sign);
   }
 
   toggleSyllableDetail(): void {

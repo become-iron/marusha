@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
+
 import { TableOfKana, Syllable } from '../syllabary';
-import { getWordsBySign, getPhrasesBySign, JapaneseWordOrPhrase } from  '../japaneseWordsAndPhrases';
+import { getWordsBySign, getPhrasesBySign, JapaneseWordOrPhrase } from '../japaneseWordsAndPhrases';
 
 @Component({
   selector: 'app-table-item-detail',

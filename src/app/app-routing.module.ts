@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 
 import { TableComponent } from './table/table.component';
 // import { TableItemDetailComponent } from './table-item-detail/table-item-detail.component';
 import { SignToTranscriptionComponent } from './sign-to-transcription/sign-to-transcription.component';
 import { TranscriptionToSignComponent } from './transcription-to-sign/transcription-to-sign.component';
 import { CorrespondingSymbolComponent } from './corresponding-symbol/corresponding-symbol.component';
-import { SettingsComponent } from "./settings/settings.component";
+import { SettingsComponent } from './settings/settings.component';
 import { AboutComponent } from './about/about.component';
 import { SimilarSignsComponent } from './similiar-signs/similiar-signs.component';
 

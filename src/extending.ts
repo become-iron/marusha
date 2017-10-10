@@ -11,7 +11,7 @@ interface Array<T> {
 // http://stackoverflow.com/a/4550514
 if (!Array.prototype.randomElement) {
   Array.prototype.randomElement = function () {
-    return this[Math.floor(Math.random() * this.length)]
+    return this[Math.floor(Math.random() * this.length)];
   };
 }
 
@@ -19,7 +19,7 @@ if (!Array.prototype.randomElement) {
 if (!Array.prototype.shuffle) {
   Array.prototype.shuffle = function () {
     for (let i = this.length; i; i--) {
-      let j = Math.floor(Math.random() * i);
+      const j = Math.floor(Math.random() * i);
       [this[i - 1], this[j]] = [this[j], this[i - 1]];
     }
   };
@@ -28,7 +28,7 @@ if (!Array.prototype.shuffle) {
 
 if (!Array.prototype.nRandomElements) {
   Array.prototype.nRandomElements = function (count: number) {
-    let _ = this.slice();
+    const _ = this.slice();
     _.shuffle();
     return _.slice(0, count);
   };
@@ -64,12 +64,12 @@ if (!Array.prototype.includes) {
       throw new TypeError('Array.prototype.includes called on null or undefined');
     }
 
-    let O = Object(this);
-    let len = parseInt(O.length, 10) || 0;
+    const O = Object(this);
+    const len = parseInt(O.length, 10) || 0;
     if (len === 0) {
       return false;
     }
-    let n = parseInt(arguments[1], 10) || 0;
+    const n = parseInt(arguments[1], 10) || 0;
     let k;
     if (n >= 0) {
       k = n;
@@ -94,7 +94,7 @@ if (!Array.prototype.includes) {
 
 
 // http://stackoverflow.com/a/9050354
-if (!Array.prototype.last){
+if (!Array.prototype.last) {
   Array.prototype.last = function(){
     return this[this.length - 1];
   };

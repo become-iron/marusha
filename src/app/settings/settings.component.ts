@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PracticeService } from "../practice.service";
-import { phrases } from "../japaneseWordsAndPhrases";
+import { PracticeService } from '../practice.service';
+import { phrases } from '../japaneseWordsAndPhrases';
 
 @Component({
   selector: 'app-settings',
@@ -24,42 +24,38 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     // получить случайную фразу для примера отображения шрифта
-    let phrase = phrases.randomElement();
-    this.example_phrase = typeof phrase.hiragana != 'undefined' ? phrase.hiragana : phrase.katakana;
+    const phrase = phrases.randomElement();
+    this.example_phrase = typeof phrase.hiragana !== 'undefined' ? phrase.hiragana : phrase.katakana;
 
     // получить настройки шрифта
-    let fontName = this.practiceService.app_data.settings.font;
+    const fontName = this.practiceService.app_data.settings.font;
     if (fontName == null) {
       this.chosen_font = this.fonts[0].text;
-    }
-    else {
-      this.chosen_font = this.fonts.find(font => font.name == fontName).text;
+    } else {
+      this.chosen_font = this.fonts.find(font => font.name === fontName).text;
     }
   }
 
   changeFont(fontText: string) {
     // TODO обдумать критические ситуации
-    if (fontText == null) {return;}
+    if (fontText === null) { return; }
 
-    let cssId = 'kana-font';
-    let cssIdElem = document.getElementById(cssId);
-    let fontName = this.fonts.find(font => font.text == fontText).name;
+    const cssId = 'kana-font';
+    const cssIdElem = document.getElementById(cssId);
+    const fontName = this.fonts.find(font => font.text === fontText).name;
 
 
-    if (fontName == '') {
+    if (fontName === '') {
       if (cssIdElem) {
         cssIdElem.remove();
       }
       this.practiceService.setData('settings', 'font', this.fonts[0].name);
-    }
-
-    else {
+    } else {
       if (cssIdElem) {
         cssIdElem.setAttribute('href', `./assets/css/toggle-fonts/${fontName}.css`);
-      }
-      else {
-        let head = document.getElementsByTagName('head')[0];
-        let link = document.createElement('link');
+      } else {
+        const head = document.getElementsByTagName('head')[0];
+        const link = document.createElement('link');
         link.id = cssId;
         link.rel = 'stylesheet';
         link.type = 'text/css';

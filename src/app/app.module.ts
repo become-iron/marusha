@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app/app.component';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 
 import { MenuComponent } from './menu/menu.component';
 import { TableComponent } from './table/table.component';

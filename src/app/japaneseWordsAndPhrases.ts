@@ -181,7 +181,7 @@ export let phrases: JapaneseWordOrPhrase[] = [
   {translation: 'Что вы сказали?', hiragana: 'なんていいましたか？'},
   {translation: 'Что случилось?', hiragana: 'どうした？'},
   {translation: 'Почему?', hiragana: 'どうして？'},
-  {translation: 'Что?', hiragana: 'なに？',},
+  {translation: 'Что?', hiragana: 'なに？'},
   {translation: 'Как тебя зовут?', hiragana: 'おなまえは？'},
   {translation: 'Сколько тебе лет?', hiragana: 'なんさいですか？'},
   {translation: 'Сколько это будет стоит?', hiragana: 'いくらかかりますか？'},
@@ -193,10 +193,10 @@ export let phrases: JapaneseWordOrPhrase[] = [
 ];
 
 export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
-  return words.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign)).nRandomElements(3);
+  return words.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign)).nRandomElements(3);
 }
 
 
 export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
-  return phrases.filter(word => typeof word[kana] != 'undefined' && word[kana].includes(sign)).nRandomElements(3);
+  return phrases.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign)).nRandomElements(3);
 }

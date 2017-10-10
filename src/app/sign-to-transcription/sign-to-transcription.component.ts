@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
 
-import { Syllable } from "../syllabary";
-import { PracticeService } from "../practice.service";
-import { Practice } from "../practice";
+import { Syllable } from '../syllabary';
+import { PracticeService } from '../practice.service';
+import { Practice } from '../practice';
 
 @Component({
   selector: 'app-sign-to-transcription',
@@ -19,7 +19,7 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
   transcription_field: string;
   transcription_field_style: any;
 
-  was_mistake: boolean = false;
+  was_mistake = false;
 
   constructor(
     protected route: ActivatedRoute,
@@ -34,9 +34,9 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
     this.route.data
       .subscribe(params => {
         this.kana = params['kana'];
-        this.other_kana = this.kana == 'hiragana' ? 'katakana' : 'hiragana';
+        this.other_kana = this.kana === 'hiragana' ? 'katakana' : 'hiragana';
 
-        let practice_data = this.practiceService.getData(this.practice_name);
+        const practice_data = this.practiceService.getData(this.practice_name);
         this.progress = practice_data[this.kana];
         this.flag_diacritic = practice_data.flag_diacritic == null ? true : practice_data.flag_diacritic;
         this.flag_youon = practice_data.flag_youon  == null ? true : practice_data.flag_youon;
@@ -47,13 +47,13 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
 
   getTask(): void {
-    let filtered = this.filterOptions();
+    const filtered = this.filterOptions();
 
-    if (filtered.length == 0) {
+    if (filtered.length === 0) {
       this.current_syllable = this.table
         .filter(syllable =>
-          (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-          && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+          (typeof syllable.isYouon === 'undefined' || syllable.isYouon === this.flag_youon)
+          && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic))
         .randomElement();
       return;
     }
@@ -61,7 +61,7 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
     // отбор предлагаемого ответа с учётом предыдущего символа
     filtered.shuffle();
     this.current_syllable = filtered[0];
-    if (this.current_syllable == this.previous_syllable) {
+    if (this.current_syllable === this.previous_syllable) {
       this.current_syllable = filtered[1];
     }
   }
@@ -69,31 +69,28 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
   filterOptions(): Syllable[] {
     return this.table
       .filter(syllable =>
-        (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] == 'undefined')
-        && (typeof syllable.isYouon == 'undefined' || syllable.isYouon == this.flag_youon)
-        && (typeof syllable.isDiacritic == 'undefined' || syllable.isDiacritic == this.flag_diacritic))
+        (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] === 'undefined')
+        && (typeof syllable.isYouon === 'undefined' || syllable.isYouon === this.flag_youon)
+        && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic))
       .slice(0, 5);
   }
 
 
   checkAnswer(value: string): void {
-    if (value != '' && value != null) {
+    if (value !== '' && value != null) {
       value = value.trim().toLowerCase();
     }
 
     if (value === '' || value == null) {
       this.transcription_field_style = {};
       return;
-    }
-    else if (value == this.current_syllable.transcription) {
+    } else if (value === this.current_syllable.transcription) {
 
-      if (typeof this.progress[this.current_syllable.id] == 'undefined') {
+      if (typeof this.progress[this.current_syllable.id] === 'undefined') {
         this.progress[this.current_syllable.id] = this.was_mistake ? -1 : 1;
-      }
-      else if (this.was_mistake && this.progress[this.current_syllable.id] > this.progress_min) {
+      } else if (this.was_mistake && this.progress[this.current_syllable.id] > this.progress_min) {
         this.progress[this.current_syllable.id]--;
-      }
-      else {
+      } else {
         this.progress[this.current_syllable.id]++;
       }
       this.is_right_previous_answer = !this.was_mistake;
@@ -111,11 +108,9 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
       this.practiceService.setData(this.practice_name, this.kana, this.progress);
 
-    }
-    else if (this.current_syllable.transcription.includes(value)) {
+    } else if (this.current_syllable.transcription.includes(value)) {
       this.transcription_field_style = {'right-answer': true};
-    }
-    else {
+    } else {
       this.was_mistake = true;
       this.transcription_field_style = {'wrong-answer': true};
       // TODO изменение стиля поля
