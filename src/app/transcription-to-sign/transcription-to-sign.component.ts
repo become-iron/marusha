@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as _ from 'underscore';
 
 import { Practice } from '../practice';
 import { PracticeService } from '../practice.service';
+import {Syllable} from '../syllabary';
 
 @Component({
   selector: 'app-transcription-to-sign',
@@ -35,7 +37,7 @@ export class TranscriptionToSignComponent extends Practice implements OnInit {
   }
 
 
-  filterOptions() {
+  filterOptions(): Syllable[] {
     return this.table
       .filter(syllable =>
       (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] === 'undefined')
@@ -45,9 +47,10 @@ export class TranscriptionToSignComponent extends Practice implements OnInit {
   }
 
 
-  filterOptions_add(filtered) {
-    return this.table
-      .filter(syllable => !filtered.includes(syllable))
-      .nRandomElements(4 - filtered.length);
+  filterOptions_add(filtered: Syllable[]): Syllable[] {
+    filtered = this.table
+      .filter(syllable => !filtered.includes(syllable));
+    const amount = 4 - filtered.length;
+    return _.sample<Syllable>(filtered, amount);
   }
 }

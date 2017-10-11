@@ -1,3 +1,5 @@
+import * as _ from 'underscore';
+
 import {TableOfKana, Syllable} from './syllabary';
 
 
@@ -32,34 +34,34 @@ export abstract class Practice extends TableOfKana {
 
   updateOptions(): void {
 
-    const filtered = this.filterOptions();
+    let filtered = this.filterOptions();
 
     if (filtered.length === 0) {
-      this.proposed_options = this.table
+      const _filtered = this.table
         .filter(syllable =>
           (typeof syllable.isYouon === 'undefined' || syllable.isYouon === this.flag_youon)
-          && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic))
-        .nRandomElements(4);
-      this.right_option = this.proposed_options.randomElement();
+          && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic));
+      this.proposed_options = _.sample<Syllable>(_filtered, 4);
+      this.right_option = _.sample<Syllable>(this.proposed_options);
       return;
     } else if (filtered.length <= 3) {
       // CHECK
       const additional_filtered = this.filterOptions_add(filtered);
       this.right_option = filtered[0];
       filtered.push(...additional_filtered);
-      filtered.shuffle();
+      filtered = _.shuffle<Syllable>(filtered);
       this.proposed_options = filtered.slice(0, 4);  // TODO
       return;
     }
 
     // отбор предлагаемых ответов с учётом предыдущего символа
-    filtered.shuffle();
+    filtered = _.shuffle<Syllable>(filtered);
     this.proposed_options = filtered.slice(0, 4);
     this.right_option = this.proposed_options[0];
     if (this.right_option === this.previous_right_option) {
       this.right_option = this.proposed_options[1];
     }
-    this.proposed_options.shuffle();
+    this.proposed_options = _.shuffle<Syllable>(this.proposed_options);
   }
 
 

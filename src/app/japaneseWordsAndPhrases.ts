@@ -1,3 +1,5 @@
+import * as _ from 'underscore';
+
 export interface JapaneseWordOrPhrase {
   hiragana?: string;
   katakana?: string;
@@ -193,10 +195,12 @@ export let phrases: JapaneseWordOrPhrase[] = [
 ];
 
 export function getWordsBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
-  return words.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign)).nRandomElements(3);
+  const filtered = words.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign));
+  return _.sample<JapaneseWordOrPhrase>(filtered, 3);
 }
 
 
 export function getPhrasesBySign(kana: string, sign: string): JapaneseWordOrPhrase[] {
-  return phrases.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign)).nRandomElements(3);
+  const filtered = phrases.filter(word => typeof word[kana] !== 'undefined' && word[kana].includes(sign));
+  return _.sample<JapaneseWordOrPhrase>(filtered, 3);
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import * as _ from 'underscore';
 
 import { PracticeService } from '../practice.service';
-import { phrases } from '../japaneseWordsAndPhrases';
+import { phrases, JapaneseWordOrPhrase } from '../japaneseWordsAndPhrases';
 
 @Component({
   selector: 'app-settings',
@@ -24,7 +25,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     // получить случайную фразу для примера отображения шрифта
-    const phrase = phrases.randomElement();
+    const phrase = _.sample<JapaneseWordOrPhrase>(phrases);
     this.example_phrase = typeof phrase.hiragana !== 'undefined' ? phrase.hiragana : phrase.katakana;
 
     // получить настройки шрифта
@@ -36,7 +37,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  changeFont(fontText: string) {
+  changeFont(fontText: string): void {
     // TODO обдумать критические ситуации
     if (fontText === null) { return; }
 
@@ -68,7 +69,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  clearHistory() {
+  clearHistory(): void {
     localStorage.clear();
     console.info('Marusha. История очищена');
   }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute } from '@angular/router';
+import * as _ from 'underscore';
 
-import { Syllable } from '../syllabary';
 import { PracticeService } from '../practice.service';
 import { Practice } from '../practice';
+import { Syllable } from '../syllabary';
 
 @Component({
   selector: 'app-sign-to-transcription',
@@ -47,19 +48,19 @@ export class SignToTranscriptionComponent extends Practice implements OnInit {
 
 
   getTask(): void {
-    const filtered = this.filterOptions();
+    let filtered = this.filterOptions();
 
     if (filtered.length === 0) {
-      this.current_syllable = this.table
+      const _filtered = this.table
         .filter(syllable =>
           (typeof syllable.isYouon === 'undefined' || syllable.isYouon === this.flag_youon)
-          && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic))
-        .randomElement();
+          && (typeof syllable.isDiacritic === 'undefined' || syllable.isDiacritic === this.flag_diacritic));
+      this.current_syllable =  _.sample<Syllable>(_filtered);
       return;
     }
 
     // отбор предлагаемого ответа с учётом предыдущего символа
-    filtered.shuffle();
+    filtered = _.shuffle<Syllable>(filtered);
     this.current_syllable = filtered[0];
     if (this.current_syllable === this.previous_syllable) {
       this.current_syllable = filtered[1];

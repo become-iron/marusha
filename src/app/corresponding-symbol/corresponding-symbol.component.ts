@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as _ from 'underscore';
 
 import { PracticeService } from '../practice.service';
 import { Practice } from '../practice';
+import { Syllable } from '../syllabary';
 
 @Component({
   selector: 'app-corresponding-symbol',
@@ -34,7 +36,7 @@ export class CorrespondingSymbolComponent extends Practice implements OnInit {
       });
   }
 
-  filterOptions() {
+  filterOptions(): Syllable[] {
     return this.table
       .filter(syllable =>
         (this.progress[syllable.id] < this.progress_max || typeof this.progress[syllable.id] === 'undefined')
@@ -43,9 +45,9 @@ export class CorrespondingSymbolComponent extends Practice implements OnInit {
       );
   }
 
-  filterOptions_add(filtered) {
-    return this.table
-      .filter(syllable => !filtered.includes(syllable))
-      .nRandomElements(4 - filtered.length);
+  filterOptions_add(filtered: Syllable[]): Syllable[] {
+    filtered = this.table
+      .filter(syllable => !filtered.includes(syllable));
+    return _.sample<Syllable>(filtered, 4 - filtered.length);
   }
 }
